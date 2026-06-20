@@ -3,244 +3,321 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Admin Access | StudyPanda</title>
+<title>Community Hub | EduMastery</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Source+Sans+3:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Source+Sans+3:wght@600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;family=Source+Sans+3:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind Configuration -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-variant": "#2d3449",
-                    "surface-bright": "#31394d",
-                    "secondary-fixed": "#ffddb8",
-                    "on-secondary": "#472a00",
-                    "secondary-fixed-dim": "#ffb95f",
-                    "on-error": "#690005",
-                    "on-secondary-fixed-variant": "#653e00",
-                    "on-error-container": "#ffdad6",
-                    "on-primary-fixed-variant": "#004395",
-                    "on-secondary-container": "#5b3800",
-                    "tertiary-container": "#8292aa",
-                    "on-surface-variant": "#c2c6d6",
-                    "on-surface": "#dae2fd",
-                    "surface-dim": "#0b1326",
-                    "surface-container-high": "#222a3d",
-                    "primary-fixed": "#d8e2ff",
-                    "tertiary-fixed-dim": "#b7c8e1",
-                    "on-secondary-fixed": "#2a1700",
-                    "surface": "#0b1326",
-                    "outline": "#8c909f",
-                    "on-primary-container": "#00285d",
-                    "background": "#0b1326",
-                    "primary-fixed-dim": "#adc6ff",
-                    "inverse-primary": "#005ac2",
-                    "on-tertiary": "#213145",
-                    "tertiary": "#b7c8e1",
-                    "surface-container-highest": "#2d3449",
-                    "error-container": "#93000a",
-                    "secondary": "#ffb95f",
-                    "on-tertiary-container": "#1a2b3e",
-                    "on-tertiary-fixed": "#0b1c30",
-                    "on-primary": "#002e6a",
-                    "on-background": "#dae2fd",
-                    "inverse-surface": "#dae2fd",
-                    "inverse-on-surface": "#283044",
-                    "primary-container": "#4d8eff",
-                    "surface-container-low": "#131b2e",
-                    "surface-container-lowest": "#060e20",
-                    "on-primary-fixed": "#001a42",
-                    "tertiary-fixed": "#d3e4fe",
-                    "secondary-container": "#ee9800",
-                    "on-tertiary-fixed-variant": "#38485d",
-                    "outline-variant": "#424754",
-                    "error": "#ffb4ab",
-                    "primary": "#adc6ff",
-                    "surface-tint": "#adc6ff",
-                    "surface-container": "#171f33"
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#060e20",
+                        "background": "#0b1326",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "outline-variant": "#424754",
+                        "on-secondary-fixed": "#2a1700",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-secondary-container": "#5b3800",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "on-primary-container": "#00285d",
+                        "secondary": "#ffb95f",
+                        "primary": "#adc6ff",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-secondary": "#472a00",
+                        "surface-container": "#171f33",
+                        "primary-container": "#4d8eff",
+                        "on-surface": "#dae2fd",
+                        "surface-tint": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-tertiary-container": "#1a2b3e",
+                        "surface-container-low": "#131b2e",
+                        "tertiary": "#b7c8e1",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-variant": "#2d3449",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-container": "#8292aa",
+                        "secondary-fixed": "#ffddb8",
+                        "secondary-container": "#ee9800",
+                        "on-tertiary": "#213145",
+                        "surface-dim": "#0b1326",
+                        "error": "#ffb4ab",
+                        "surface": "#0b1326",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "inverse-primary": "#005ac2",
+                        "surface-container-high": "#222a3d",
+                        "inverse-on-surface": "#283044",
+                        "on-background": "#dae2fd",
+                        "on-error": "#690005",
+                        "surface-bright": "#31394d",
+                        "outline": "#8c909f",
+                        "on-primary": "#002e6a",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-xl": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "label-md": ["\"Source Sans 3\""],
+                        "headline-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
             },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "container-max": "1280px",
-                    "md": "16px",
-                    "xl": "40px",
-                    "margin-mobile": "16px",
-                    "base": "4px",
-                    "sm": "8px",
-                    "gutter": "24px",
-                    "xs": "4px",
-                    "lg": "24px"
-            },
-            "fontFamily": {
-                    "headline-lg-mobile": ["Public Sans"],
-                    "body-lg": ["Public Sans"],
-                    "label-md": ["\"Source Sans 3\""],
-                    "headline-lg": ["Public Sans"],
-                    "caption": ["Public Sans"],
-                    "body-md": ["Public Sans"],
-                    "headline-xl": ["Public Sans"],
-                    "headline-md": ["Public Sans"]
-            },
-            "fontSize": {
-                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
+        }
     </script>
 <style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        body {
-            background-color: #0b1326;
-            font-family: 'Public Sans', sans-serif;
-            overflow-x: hidden;
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .login-card {
-            background-color: #1e293b; /* Level 1 Surface */
-            border: 1px solid #334155;
-        }
-        .input-field {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .input-field:focus {
+        .card-hover:hover {
             border-color: #3b82f6;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-        }
-        .amber-button {
-            background-color: #ee9800; /* Amber/Gold Accent from Secondary Container */
-            color: #0b1326;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .amber-button:hover {
-            background-color: #ffb95f;
-            transform: translateY(-1px);
-        }
-        .amber-button:active {
-            transform: translateY(0px);
-        }
-        .subtle-grid {
-            background-image: radial-gradient(circle at 2px 2px, rgba(51, 65, 85, 0.3) 1px, transparent 0);
-            background-size: 32px 32px;
+            transform: translateY(-4px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
-<body class="text-on-background min-h-screen flex flex-col items-center justify-center p-6 subtle-grid">
-<!-- Top Branding / Visual Anchor -->
-<div class="mb-12 flex flex-col items-center">
-<div class="relative w-24 h-24 mb-6 rounded-full overflow-hidden border-2 border-outline-variant p-1 bg-surface-container">
-<img alt="Study Panda Logo" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBK-hyLPG5dkdjb0RAu6glbA0_Qa3pFl3yGvZTqEbW-CWXHSMkOwumkSARzjOPH08wcDHWKqB97AB2LSJjb51RurtkshctQNo2xYzAmjSWTcPSpi59KIisqNfzYg_HKebYVb5B473sdnXbEsFM8fK1frXmuej672JlXL1Qxct3zBg3hn3CbodkO-aLRf-965UmsxVxE4qwwtP9UEExpnXGmVsNWe2Q3_qXExFGmVW0YFdaisfbTLGEM_eLFwp2_bRVldm-Op7AcoH-"/>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50 transition-colors duration-200">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full overflow-hidden border border-primary-container">https://lh3.googleusercontent.com/aida-public/AB6AXuAC3MuMYkYnuMWRqig_6rU_Hbwzp-NOkIMIO7Gu9TyMjMqnFDUhuDXFz5yEhm8s1SlfVVmyv-y4A9SaiY-Ep0sAWRVuAHgSO7VakXZvhCW8Uao1nbKzq3beDHREDMwPVBTXoT9JW0B7aQgl3crUcXt3zpv3j8pW0cvjdgtbH0SyJ4CqZbvb_F-TxkQyTyaJMBFsEzsBMbGQ5UOjthwWoEQXz9Tjjgx4SxSoCtsd-B25YxJIJPFS8o7mYJwy-mz5g-jcFvHHp6_lycBr</div>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Study Panda</span>
 </div>
-<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight text-center">
-            Study Panda
-        </h1>
-<p class="font-label-md text-label-md text-on-surface-variant uppercase mt-1">Dream Big, Study Hard, Succeed Always</p>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary dark:text-primary-fixed font-bold font-label-md text-label-md" href="#">Community</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Resources</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Performance</a>
 </div>
-<!-- Central Auth Container -->
-<div class="w-full max-w-md">
-<main class="login-card p-8 rounded-xl shadow-2xl relative overflow-hidden">
-<!-- Decorative Accents -->
-<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
-<header class="mb-8">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Admin Access</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Please authenticate with your institutional credentials to enter the administration dashboard.</p>
-</header>
-<form class="space-y-6" onsubmit="event.preventDefault();">
-<!-- Email Field -->
-<div class="space-y-2">
-<label class="block font-label-md text-label-md text-on-surface-variant" for="admin-email">Admin Email</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-body-md">mail</span>
-<input class="input-field w-full pl-10 pr-4 py-3 rounded-lg text-on-surface font-body-md" id="admin-email" placeholder="e.g. administrator@studypanda.edu" type="email"/>
-</div>
-</div>
-<!-- Security Key Field -->
-<div class="space-y-2">
-<div class="flex justify-between items-center">
-<label class="block font-label-md text-label-md text-on-surface-variant" for="security-key">Security Key/Password</label>
-<a class="font-caption text-caption text-primary hover:underline" href="#">Forgot Security Key?</a>
-</div>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-body-md">lock</span>
-<input class="input-field w-full pl-10 pr-12 py-3 rounded-lg text-on-surface font-body-md" id="security-key" placeholder="••••••••••••" type="password"/>
-<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" type="button">
-<span class="material-symbols-outlined">visibility</span>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span>
 </button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young male student wearing a dark navy blue hoodie, looking confidently at the camera with a subtle smile. The lighting is soft and cinematic, with a clean, dark slate blue background that emphasizes a premium academic aesthetic. The image is crisp and high-resolution, suitable for a prestige education platform profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP7Y7RBCflflZ5NZaL9FtmtZ_GrWHzSd2Zdp32x6uNs1Lbp1pzqPwzmPBFlRgNwb2FYC4NtbaPKE6c-CyCgkg6UFeUp9VO1avzbb_yZVaSwTg2OJyZou5iMUwYNk4gX0RzpJi7J680jrSmVXNIGQZVWefkUqhjS5TiGUIaKoo_H05Tj7ANSoSOZGHOlgfbgZ_9EDuVbZyIU0FDFZ27fe8l0ocYbGQN6eT37K4N6AdskAHXAG2HyZZiicMlTJF5pXdrvih_uBK7_PFw"/>
 </div>
 </div>
-<!-- Primary Action -->
-<button class="amber-button w-full py-4 rounded-lg font-label-md text-label-md uppercase tracking-wider font-bold shadow-lg flex items-center justify-center gap-2" type="submit">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">login</span>
-                    Login as Admin
-                </button>
-</form>
-<!-- Footer Actions -->
-<footer class="mt-8 pt-6 border-t border-outline-variant flex flex-col items-center gap-4">
-<a class="group flex items-center gap-2 font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-body-md transition-transform group-hover:-translate-x-1">arrow_back</span>
-                    Return to Student Login
-                </a>
-</footer>
+</div>
+</header>
+<main class="mt-24 mb-32 px-margin-mobile max-w-7xl mx-auto">
+<!-- Search and Introduction -->
+<div class="mb-8 p-4 bg-primary-container/10 border border-primary-container rounded-xl flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-on-surface-variant text-label-md">Study Panda community access is restricted to your enrolled exam path to ensure focused discussions and platform security.</p>
+</div><section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-lg">
+<div class="max-w-2xl">
+<h1 class="font-headline-lg text-headline-lg mb-2">Student Communities</h1>
+<p class="text-on-surface-variant">Connect with elite peers and mentors in specialized groups designed for high-stakes examinations.</p>
+</div>
+<div class="relative w-full md:w-96 group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Search sub-groups (e.g. History, Ethics)" type="text"/>
+</div>
+</div>
+</section>
+<!-- Main Community Cards -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-lg mb-16">
+<!-- UPSC Aspirants Card -->
+<div class="glass-card card-hover p-lg rounded-xl flex flex-col gap-6 relative overflow-hidden"><!-- Branding Background Overlay -->
+<div class="absolute top-0 right-0 w-48 h-48 opacity-10 -mr-12 -mt-12">
+<img class="w-full h-full object-contain filter grayscale invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4iEvgcNg3wbXuNR7PKXEK2XZx4f5lORsq4ONyTcr21U4hL-0tXcDd1zbLVvxrDGz4yprL-U5flnyS9mdL2UkOTIcXDFlemLSAi2S7TY8d4h1x8GtsuUMFBZdOiMpTrLzLkaWnGrG6klAj4n6OjrPSFLkiOBNaQeG8DdvrtIPmoUdCq8EfBTI2VIJt7FdUgjksiEBGS8vUcWw-1pbzmIpFKyt_iv7SNjVWZEdTbgoYftAuQ2sBWpVZMVO6M2RmhL16F8OVwTZae2rP"/>
+</div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-2">
+<div class="flex gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-caption font-bold">PREMIUM ACCESS</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-caption font-bold">EXCLUSIVE TO UPSC BATCH</span>
+</div>
+<h2 class="font-headline-md text-headline-md">UPSC Aspirants</h2>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-label-md">1,248 Active Students</span>
+</div>
+</div>
+<div class="w-16 h-16 bg-surface-container-highest rounded-xl flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</div>
+<p class="text-on-surface-variant flex-grow">A high-authority forum for Civil Services preparation. Join peer-led mock sessions, share daily GS answers, and access exclusive strategy documents from previous rankers.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container-high px-2 py-1 rounded text-caption border border-outline-variant">#GS-Papers</span>
+<span class="bg-surface-container-high px-2 py-1 rounded text-caption border border-outline-variant">#EthicsCaseStudies</span>
+<span class="bg-surface-container-high px-2 py-1 rounded text-caption border border-outline-variant">#MainsPreparation</span>
+</div>
+<button class="w-full py-4 bg-surface-container-highest text-on-surface-variant rounded-xl font-bold cursor-not-allowed flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+  Enroll in UPSC to Join
+</button></div>
+<!-- JKPSC Aspirants Card -->
+<div class="glass-card card-hover p-lg rounded-xl flex flex-col gap-6 relative overflow-hidden"><!-- Branding Background Overlay -->
+<div class="absolute top-0 right-0 w-48 h-48 opacity-10 -mr-12 -mt-12">
+<img class="w-full h-full object-contain filter grayscale invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4iEvgcNg3wbXuNR7PKXEK2XZx4f5lORsq4ONyTcr21U4hL-0tXcDd1zbLVvxrDGz4yprL-U5flnyS9mdL2UkOTIcXDFlemLSAi2S7TY8d4h1x8GtsuUMFBZdOiMpTrLzLkaWnGrG6klAj4n6OjrPSFLkiOBNaQeG8DdvrtIPmoUdCq8EfBTI2VIJt7FdUgjksiEBGS8vUcWw-1pbzmIpFKyt_iv7SNjVWZEdTbgoYftAuQ2sBWpVZMVO6M2RmhL16F8OVwTZae2rP"/>
+</div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-2">
+<div class="flex gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-caption font-bold">STATE EXAMS</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-caption font-bold">EXCLUSIVE TO JKPSC BATCH</span>
+</div>
+<h2 class="font-headline-md text-headline-md">JKPSC Aspirants</h2>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-label-md">842 Active Students</span>
+</div>
+</div>
+<div class="w-16 h-16 bg-surface-container-highest rounded-xl flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-[32px] text-secondary" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+</div>
+<p class="text-on-surface-variant flex-grow">Specialized community focusing on Jammu &amp; Kashmir Administrative Services. Discuss regional current affairs, state-specific history, and latest recruitment notifications.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container-high px-2 py-1 rounded text-caption border border-outline-variant">#StateHistory</span>
+<span class="bg-surface-container-high px-2 py-1 rounded text-caption border border-outline-variant">#KAS2024</span>
+<span class="bg-surface-container-high px-2 py-1 rounded text-caption border border-outline-variant">#CurrentAffairs-JK</span>
+</div>
+<button class="w-full py-4 bg-surface-container-highest text-on-surface-variant rounded-xl font-bold cursor-not-allowed flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+  Enroll in JKPSC to Join
+</button></div>
+</section>
+<!-- Sub-Groups Bento Section -->
+<section>
+<h3 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+                Explore Sub-Groups
+            </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="glass-card p-4 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">history_edu</span>
+<h4 class="font-bold text-label-md">Indian History</h4>
+<p class="text-caption text-on-surface-variant">215 Active</p>
+</div>
+<div class="glass-card p-4 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">public</span>
+<h4 class="font-bold text-label-md">Polity &amp; Governance</h4>
+<p class="text-caption text-on-surface-variant">156 Active</p>
+</div>
+<div class="glass-card p-4 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-tertiary mb-2 group-hover:scale-110 transition-transform">query_stats</span>
+<h4 class="font-bold text-label-md">Economics</h4>
+<p class="text-caption text-on-surface-variant">98 Active</p>
+</div>
+<div class="glass-card p-4 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-error mb-2 group-hover:scale-110 transition-transform">biotech</span>
+<h4 class="font-bold text-label-md">Sci &amp; Tech</h4>
+<p class="text-caption text-on-surface-variant">112 Active</p>
+</div>
+<div class="glass-card p-4 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">translate</span>
+<h4 class="font-bold text-label-md">Linguistics</h4>
+<p class="text-caption text-on-surface-variant">45 Active</p>
+</div>
+<div class="glass-card p-4 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">menu_book</span>
+<h4 class="font-bold text-label-md">Essay Mastery</h4>
+<p class="text-caption text-on-surface-variant">320 Active</p>
+</div>
+<div class="glass-card p-4 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-tertiary mb-2 group-hover:scale-110 transition-transform">gavel</span>
+<h4 class="font-bold text-label-md">Legal Studies</h4>
+<p class="text-caption text-on-surface-variant">67 Active</p>
+</div>
+<div class="glass-card p-4 rounded-xl border border-outline-variant bg-primary-container/10 flex flex-col justify-center items-center hover:bg-primary-container/20 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-1">add_circle</span>
+<h4 class="font-bold text-label-md text-primary">View All</h4>
+</div>
+</div>
+</section>
 </main>
-<!-- Trust Markers -->
-<div class="mt-10 flex justify-center items-center gap-6 opacity-40">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">verified_user</span>
-<span class="font-caption text-caption">End-to-End Encrypted</span>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-label-sm text-label-sm">Quiz</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-sm text-label-sm">Videos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</a>
+</nav>
+<!-- Floating Atmosphere Elements -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
 </div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-sm">shield</span>
-<span class="font-caption text-caption">Sovereign Cloud Secured</span>
-</div>
-</div>
-</div>
-<!-- Bottom Navigation Omitted as per Requirements -->
 <script>
-        // Micro-interaction for the "Visibility" toggle
-        const toggleBtn = document.querySelector('button[type="button"]');
-        const passwordInput = document.getElementById('security-key');
-        
-        if (toggleBtn && passwordInput) {
-            toggleBtn.addEventListener('click', () => {
-                const isPassword = passwordInput.type === 'password';
-                passwordInput.type = isPassword ? 'text' : 'password';
-                toggleBtn.querySelector('span').textContent = isPassword ? 'visibility_off' : 'visibility';
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.98)';
             });
-        }
-
-        // Form submission ripple/feedback effect simulation
-        const loginForm = document.querySelector('form');
-        loginForm.addEventListener('submit', () => {
-            const btn = loginForm.querySelector('button[type="submit"]');
-            const originalContent = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> Validating...`;
-            
-            setTimeout(() => {
-                btn.innerHTML = originalContent;
-                btn.disabled = false;
-window.location.href = "home.html";
-            }, 1500);
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
         });
     </script>
 </body></html>
