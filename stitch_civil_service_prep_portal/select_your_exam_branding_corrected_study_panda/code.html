@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduMastery - Goal Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&amp;family=Source+Sans+3:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131b2e",
+                        "tertiary": "#b7c8e1",
+                        "on-tertiary-container": "#1a2b3e",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-container": "#8292aa",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-highest": "#2d3449",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "on-background": "#dae2fd",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-bright": "#31394d",
+                        "secondary-fixed": "#ffddb8",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "error-container": "#93000a",
+                        "outline-variant": "#424754",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-secondary-container": "#5b3800",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface": "#0b1326",
+                        "on-tertiary": "#213145",
+                        "surface-variant": "#2d3449",
+                        "primary-container": "#4d8eff",
+                        "surface-container-lowest": "#060e20",
+                        "on-secondary": "#472a00",
+                        "on-primary-fixed": "#001a42",
+                        "on-error": "#690005",
+                        "on-primary-container": "#00285d",
+                        "on-primary-fixed-variant": "#004395",
+                        "error": "#ffb4ab",
+                        "background": "#0b1326",
+                        "surface-tint": "#adc6ff",
+                        "on-secondary-fixed": "#2a1700",
+                        "surface-container": "#171f33",
+                        "on-surface": "#dae2fd",
+                        "inverse-primary": "#005ac2",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-dim": "#0b1326",
+                        "outline": "#8c909f",
+                        "secondary": "#ffb95f",
+                        "secondary-container": "#ee9800",
+                        "primary": "#adc6ff",
+                        "on-primary": "#002e6a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Public Sans"],
+                        "headline-xl": ["Public Sans"],
+                        "label-md": ["\"Source Sans 3\""],
+                        "headline-md": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "caption": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .option-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-card.selected {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.1);
+            transform: translateY(-4px);
+        }
+        .panda-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- Top AppBar (from JSON) -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50 transition-colors duration-200">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A friendly and scholarly anthropomorphic study panda mascot wearing academic robes and round glasses. He is holding a digital tablet and smiling warmly at the viewer in a high-quality 3D render style. The background is a soft, deep navy blue with glowing particles of knowledge. Corporate modernism style with cinematic lighting and a professional finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC1E8C37MPsdUVNQIw8NwZDFG_CuL_f0N-sbCZumXduPYTbLM7Ezf73VyDIP1rrqSjDlD7FEJQc6cCI6xhU2mmbRBShI589KYXT18yzpMMWCUOlhqJjim26n5uC6RHq6nJRUYh7ALp5XQl6MWj2_6TUZ43xrxUoLYQgnI3Ei6BDj0FDMdUetnU617uc7-Bz26cnZ7sW0I_WzZU59bhyIayi5LMU66qpVwLr_w16SenGd2uzd1hAZTOUR7HVeHF8I-3OojsDuSaanuu"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Study Panda</h1>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high p-2 rounded-full transition-colors duration-200">
+                notifications
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center pt-24 pb-32 px-margin-mobile relative">
+<!-- Background Animation -->
+<div class="absolute inset-0 z-0 pointer-events-none opacity-20">
+</div>
+<div class="w-full max-w-4xl z-10 space-y-lg text-center">
+<!-- Mascot Message -->
+<div class="flex flex-col items-center gap-md mb-xl">
+<div class="w-32 h-32 md:w-40 md:h-40 panda-float">
+<img class="w-full h-full object-contain" data-alt="A close-up 3D render of the Study Panda mascot, a scholarly panda wearing professional reading glasses and a small blue bowtie. He is pointing towards the screen as if giving advice. The artistic style is sovereign modernism, with high-detail fur and realistic textures set against a deep slate background. Lighting is focused and dramatic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC1E8C37MPsdUVNQIw8NwZDFG_CuL_f0N-sbCZumXduPYTbLM7Ezf73VyDIP1rrqSjDlD7FEJQc6cCI6xhU2mmbRBShI589KYXT18yzpMMWCUOlhqJjim26n5uC6RHq6nJRUYh7ALp5XQl6MWj2_6TUZ43xrxUoLYQgnI3Ei6BDj0FDMdUetnU617uc7-Bz26cnZ7sW0I_WzZU59bhyIayi5LMU66qpVwLr_w16SenGd2uzd1hAZTOUR7HVeHF8I-3OojsDuSaanuu"/>
+</div>
+<div class="glass-panel p-md rounded-xl max-w-md">
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        "Welcome to <span class="text-primary font-bold">Study Panda</span>! I'm here to help you conquer your goals. Which path shall we take today?"
+                    </p>
+</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg md:text-headline-xl mb-sm">Select Your Target Exam</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mb-xl">
+                We'll personalize your learning materials, quizzes, and progress tracking based on your selection.
+            </p>
+<!-- Exam Selection Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-xs">
+<!-- UPSC Card -->
+<button class="option-card glass-panel group p-xl rounded-xl text-left border border-outline-variant hover:border-primary/50 flex flex-col items-start gap-md" id="upsc-card" onclick="selectGoal('upsc')">
+<div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">account_balance</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs text-primary">UPSC</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Union Public Service Commission. Prepare for Civil Services, IFS, and high-level central government careers.
+                        </p>
+</div>
+<div class="mt-auto pt-md flex items-center gap-xs text-label-md font-label-md text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                        CHOOSE UPSC <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</button>
+<!-- JKPSC Card -->
+<button class="option-card glass-panel group p-xl rounded-xl text-left border border-outline-variant hover:border-primary/50 flex flex-col items-start gap-md" id="jkpsc-card" onclick="selectGoal('jkpsc')">
+<div class="w-14 h-14 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">map</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs text-secondary">JKPSC</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Jammu and Kashmir Public Service Commission. Focus on state-level administrative and civil services.
+                        </p>
+</div>
+<div class="mt-auto pt-md flex items-center gap-xs text-label-md font-label-md text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
+                        CHOOSE JKPSC <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</button>
+</div>
+<!-- Footer Action -->
+<div class="mt-xl pt-lg">
+<button class="px-xl py-lg rounded-full font-label-md text-label-md uppercase tracking-widest bg-outline-variant text-on-surface-variant cursor-not-allowed transition-all duration-300 w-full md:w-auto min-w-[240px]" disabled="" id="continue-btn">
+                    Continue to Dashboard
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Hidden on Onboarding/Transactional as per prompt rules) -->
+<!-- Suppressed to prioritize the Canvas & Focus Journey -->
+<script>
+        let selectedGoal = null;
+
+        function selectGoal(goal) {
+            selectedGoal = goal;
+            
+            // UI Feedback for cards
+            const upsc = document.getElementById('upsc-card');
+            const jkpsc = document.getElementById('jkpsc-card');
+            const btn = document.getElementById('continue-btn');
+
+            if (goal === 'upsc') {
+                upsc.classList.add('selected', 'border-primary', 'ring-2', 'ring-primary/20');
+                jkpsc.classList.remove('selected', 'border-primary', 'ring-2', 'ring-primary/20');
+            } else {
+                jkpsc.classList.add('selected', 'border-secondary', 'ring-2', 'ring-secondary/20');
+                upsc.classList.remove('selected', 'border-secondary', 'ring-2', 'ring-secondary/20');
+            }
+
+            // Enable button
+            btn.disabled = false;
+            btn.classList.remove('bg-outline-variant', 'text-on-surface-variant', 'cursor-not-allowed');
+            btn.classList.add('bg-primary', 'text-on-primary', 'shadow-lg', 'shadow-primary/20', 'hover:brightness-110', 'active:scale-95');
+            
+            // Micro-interaction: Playful bounce
+            btn.classList.add('animate-bounce');
+            setTimeout(() => btn.classList.remove('animate-bounce'), 500);
+        }
+
+        // Initialize micro-interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.option-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    if (!card.classList.contains('selected')) {
+                        card.style.transform = 'translateY(-2px)';
+                    }
+                });
+                card.addEventListener('mouseleave', () => {
+                    if (!card.classList.contains('selected')) {
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

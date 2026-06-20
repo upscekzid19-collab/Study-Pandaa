@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduMastery - Create Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#131b2e",
+                    "tertiary": "#b7c8e1",
+                    "on-tertiary-container": "#1a2b3e",
+                    "primary-fixed": "#d8e2ff",
+                    "tertiary-container": "#8292aa",
+                    "surface-container-high": "#222a3d",
+                    "surface-container-highest": "#2d3449",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#283044",
+                    "on-background": "#dae2fd",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-bright": "#31394d",
+                    "secondary-fixed": "#ffddb8",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "primary-fixed-dim": "#adc6ff",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "error-container": "#93000a",
+                    "outline-variant": "#424754",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-secondary-container": "#5b3800",
+                    "inverse-surface": "#dae2fd",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface": "#0b1326",
+                    "on-tertiary": "#213145",
+                    "surface-variant": "#2d3449",
+                    "primary-container": "#4d8eff",
+                    "surface-container-lowest": "#060e20",
+                    "on-secondary": "#472a00",
+                    "on-primary-fixed": "#001a42",
+                    "on-error": "#690005",
+                    "on-primary-container": "#00285d",
+                    "on-primary-fixed-variant": "#004395",
+                    "error": "#ffb4ab",
+                    "background": "#0b1326",
+                    "surface-tint": "#adc6ff",
+                    "on-secondary-fixed": "#2a1700",
+                    "surface-container": "#171f33",
+                    "on-surface": "#dae2fd",
+                    "inverse-primary": "#005ac2",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-dim": "#0b1326",
+                    "outline": "#8c909f",
+                    "secondary": "#ffb95f",
+                    "secondary-container": "#ee9800",
+                    "primary": "#adc6ff",
+                    "on-primary": "#002e6a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Public Sans"],
+                    "headline-xl": ["Public Sans"],
+                    "label-md": ["Source Sans 3"],
+                    "headline-md": ["Public Sans"],
+                    "headline-lg-mobile": ["Public Sans"],
+                    "caption": ["Public Sans"],
+                    "headline-lg": ["Public Sans"],
+                    "body-lg": ["Public Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .auth-container {
+            min-height: calc(100vh - 80px);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-secondary/30">
+<!-- Top Navigation Bar (Shared Component Logic - Suppressed on Auth by guideline but required by prompt's branding context) -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 left-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-headline-md" data-icon="school">school</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Study Panda</span>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Courses</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Institutions</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Pricing</a>
+</div>
+<a class="text-on-surface font-label-md text-label-md px-4 py-2 border border-outline rounded-lg hover:bg-surface-container-high transition-colors" href="#">Login</a>
+</div>
+</header>
+<main class="relative pt-20 overflow-hidden flex items-center justify-center auth-container">
+<!-- Ambient Background Decoration -->
+<div class="absolute inset-0 pointer-events-none">
+
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]"></div>
+</div>
+<div class="container max-w-7xl mx-auto px-margin-mobile grid lg:grid-cols-2 gap-12 items-center relative z-10 py-12">
+<!-- Left Side: Value Proposition -->
+<div class="hidden lg:flex flex-col space-y-8">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-background mb-4">Master Your Future with <span class="text-secondary">Study Panda</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">Join the world's most prestigious learning platform designed for government, finance, and elite academic achievement.</p>
+</div>
+<div class="space-y-6">
+<div class="flex items-start gap-4 p-4 rounded-xl border border-outline-variant bg-surface-container-low">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Institutional Integrity</h3>
+<p class="text-on-surface-variant text-caption font-caption">Verified curriculum used by top-tier governmental and financial organizations.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl border border-outline-variant bg-surface-container-low">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Elite Certification</h3>
+<p class="text-on-surface-variant text-caption font-caption">Earn recognized badges of excellence in specialized academic fields.</p>
+</div>
+</div>
+</div>
+<div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-outline-variant shadow-2xl floating-element">
+<img class="w-full h-full object-cover" data-alt="A high-end, sophisticated cinematic shot of a modern, dark-themed digital study interface displayed on a sleek laptop. The screen shows glowing gold achievement markers and deep blue data visualizations. The environment is a dimly lit, luxurious executive study with dark wood textures and soft warm accent lighting. The overall mood is academic, prestigious, and highly secure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsMykdyH_qZ8hAOm3TX9yvNUjOZvDBMg9EY-utCnwcUw_nrmrms4Na7570Ssn9HhLp09YNY5E5-QKnB6T3SYpjLyZY98WmE6utD1RNf0GDzgRD6DDHqJB6eL3Z_GRCk5lTiCiqnol__Bx9auyiAQj31EMeLcxyMndLNbeXUSy3Gb1rmi0gGEUCuNJ78NpA_8eR8gVDXqohsBz97Kd-XPjGfs-HggBAdrKGZHRWVkdFCokhb-ml3V5YE84cJgl_zY67vis-IDGRFWCI"/>
+</div>
+</div>
+<!-- Right Side: Registration Form -->
+<div class="w-full max-w-md mx-auto lg:mx-0">
+<div class="glass-panel p-8 md:p-10 rounded-2xl shadow-2xl">
+<div class="text-center mb-8">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Create Account</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Secure your path to excellence.</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant" for="fullname">Full Name</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="person">person</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-outline/50" id="fullname" name="fullname" placeholder="Alexander Hamilton" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant" for="email">Institutional Email</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="alternate_email">alternate_email</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-outline/50" id="email" name="email" placeholder="name@institution.gov" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant" for="password">Security Password</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-12 py-3 bg-surface-container-low border border-outline-variant rounded-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-outline/50" id="password" name="password" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+<p class="text-[10px] text-outline mt-1 px-1">Must contain at least 12 characters, a symbol, and a numeral.</p>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-4 bg-secondary text-on-secondary font-label-md text-label-md font-bold rounded-lg shadow-lg shadow-secondary/20 hover:bg-secondary-container hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+<span>Sign Up</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 font-label-md text-label-md text-outline">OR CONTINUE WITH</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Options -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-high border border-outline-variant rounded-lg hover:bg-surface-bright transition-all group" type="button">
+<img alt="Google" class="w-5 h-5 grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI8UyrIvNwqCkBkVInShkLlVQZ8nV3dZ6rno_51smNwV6chTwFmzKo6Io1PF-gPv0JfMFGMEUpRkRYEICcQNuMZmv4jy1Pxds6y2AtUluln5ISktZDEgpZBw-5iuVGTVPEr-X2KxxeUqey7nngM7bWenTS8L1KMsDB3gz7vWERju8iPyEjIXa5EbIYYGYh8T5NAo7CvOYwVkHJP0ndOgSQTVFYuAlxqVEJBWw6bCk8LsJrTS32pv_UQm8HOm7LshHUkxv11WL5PO3l"/>
+<span class="font-label-md text-label-md text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-high border border-outline-variant rounded-lg hover:bg-surface-bright transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface" data-icon="apple" style="font-variation-settings: 'FILL' 1;">apps</span>
+<span class="font-label-md text-label-md text-on-surface">Apple</span>
+</button>
+</div>
+<!-- Footer Link -->
+<p class="text-center font-body-md text-body-md text-on-surface-variant mt-8">
+                            Already part of our ecosystem? 
+                            <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="#">Login</a>
+</p>
+</form>
+</div>
+<!-- Terms -->
+<p class="mt-6 text-center text-caption font-caption text-outline max-w-xs mx-auto">
+                    By registering, you agree to our 
+                    <a class="underline" href="#">Terms of Excellence</a> and 
+                    <a class="underline" href="#">Sovereign Privacy Policy</a>.
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Footer Decorative Element -->
+<footer class="w-full py-8 border-t border-outline-variant/30 mt-auto">
+<div class="max-w-7xl mx-auto px-margin-mobile flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-outline font-caption text-caption">© 2024 Study Panda Institutional Learning Systems.</p>
+<div class="flex gap-6">
+<span class="flex items-center gap-2 text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    AES-256 Encrypted
+                </span>
+<span class="flex items-center gap-2 text-outline font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]" data-icon="gavel">gavel</span>
+                    Regulatory Compliant
+                </span>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.style.transition = 'all 0.3s ease';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Toggle Password visibility
+        const togglePass = document.querySelector('button[type="button"] .material-symbols-outlined[data-icon="visibility"]');
+        if (togglePass) {
+            let visible = false;
+            togglePass.parentElement.addEventListener('click', () => {
+                visible = !visible;
+                const input = document.getElementById('password');
+                input.type = visible ? 'text' : 'password';
+                togglePass.textContent = visible ? 'visibility_off' : 'visibility';
+            });
+        }
+    </script>
+</body></html>

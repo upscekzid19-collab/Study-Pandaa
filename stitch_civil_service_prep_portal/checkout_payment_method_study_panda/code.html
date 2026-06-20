@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduMastery - Secure Payment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=Source+Sans+3:wght@600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&family=Source+Sans+3:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-payment-card {
+            border-color: #ffb95f !important; /* secondary color / gold accent */
+            background-color: #222a3d !important; /* surface-container-high */
+        }
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(255, 185, 95, 0.15);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#653e00",
+                    "on-tertiary": "#213145",
+                    "surface-container-low": "#131b2e",
+                    "inverse-surface": "#dae2fd",
+                    "surface": "#0b1326",
+                    "primary-container": "#4d8eff",
+                    "outline-variant": "#424754",
+                    "on-background": "#dae2fd",
+                    "surface-variant": "#2d3449",
+                    "tertiary": "#b7c8e1",
+                    "error": "#ffb4ab",
+                    "inverse-primary": "#005ac2",
+                    "background": "#0b1326",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#283044",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "outline": "#8c909f",
+                    "secondary-fixed": "#ffddb8",
+                    "secondary-container": "#ee9800",
+                    "primary-fixed-dim": "#adc6ff",
+                    "primary": "#adc6ff",
+                    "secondary": "#ffb95f",
+                    "on-secondary-container": "#5b3800",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed": "#d8e2ff",
+                    "surface-bright": "#31394d",
+                    "on-primary-fixed-variant": "#004395",
+                    "surface-container-highest": "#2d3449",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-primary-fixed": "#001a42",
+                    "on-tertiary-container": "#1a2b3e",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-error-container": "#ffdad6",
+                    "surface-container": "#171f33",
+                    "on-secondary-fixed": "#2a1700",
+                    "on-primary": "#002e6a",
+                    "surface-dim": "#0b1326",
+                    "surface-container-lowest": "#060e20",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "on-surface": "#dae2fd",
+                    "tertiary-container": "#8292aa",
+                    "on-secondary": "#472a00",
+                    "on-primary-container": "#00285d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "xl": "40px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Public Sans"],
+                    "headline-xl": ["Public Sans"],
+                    "caption": ["Public Sans"],
+                    "body-lg": ["Public Sans"],
+                    "headline-lg-mobile": ["Public Sans"],
+                    "headline-lg": ["Public Sans"],
+                    "body-md": ["Public Sans"],
+                    "label-md": ["\"Source Sans 3\""]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- Top App Bar (Shared Component Strategy) -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-sm rounded-full transition-colors" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">EduMastery</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a student in a dark academic setting with soft teal and blue lighting. The style is modern corporate photography, clean and intellectual, fitting a high-prestige educational platform's user profile icon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDljjbNyjag2xTqcfxbCYjiEU7zUSUHeJpKU2-SuVzazAs0teaNQ2SNzTxU5uXGMAnRvGNt3Avn2V_Y9OJke9SzXiO7RPQw0a9Oncc2vrwCVFuoDoLquo812i43JbgxUxKT_qFY8dE1rAc8hKeIl6cQFc5s2LcoMavZxEgI9MNVta6lM0ABn-zuZaPTDzeTOwhC16zbocZiIcZgmBQOd4movtPL_cpfys1L0E-TaX2MxF8XQWsOaL9vR8Gex05HeFwxe5X7fNvJ3Ubn"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-20 pb-32 px-margin-mobile max-w-2xl mx-auto w-full">
+<!-- Screen Header -->
+<div class="mb-xl text-center">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Select Payment Method</h2>
+<p class="font-body-md text-on-surface-variant">Complete your enrollment for the <span class="text-secondary font-bold">Advanced UI Mastery</span> course.</p>
+</div>
+<!-- Payment Section: UPI -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-wider">UPI Payments</h3>
+<div class="space-y-sm">
+<!-- GPay -->
+<div class="payment-card group cursor-pointer flex items-center justify-between p-md bg-surface-container border border-outline-variant rounded-xl transition-all hover:border-secondary/50" onclick="selectMethod(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-on-surface text-3xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-headline-sm text-on-surface font-semibold">Google Pay</p>
+<p class="text-caption text-on-surface-variant">Fast & Secure UPI</p>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline group-hover:border-secondary transition-colors flex items-center justify-center">
+<div class="inner-dot w-2.5 h-2.5 rounded-full bg-secondary scale-0 transition-transform"></div>
+</div>
+</div>
+<!-- PhonePe -->
+<div class="payment-card group cursor-pointer flex items-center justify-between p-md bg-surface-container border border-outline-variant rounded-xl transition-all hover:border-secondary/50" onclick="selectMethod(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-on-surface text-3xl" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="font-headline-sm text-on-surface font-semibold">PhonePe</p>
+<p class="text-caption text-on-surface-variant">Pay using UPI ID or Number</p>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline group-hover:border-secondary transition-colors flex items-center justify-center">
+<div class="inner-dot w-2.5 h-2.5 rounded-full bg-secondary scale-0 transition-transform"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Section: Cards -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-wider">Credit & Debit Cards</h3>
+<div class="space-y-sm">
+<div class="payment-card group cursor-pointer flex items-center justify-between p-md bg-surface-container border border-outline-variant rounded-xl transition-all hover:border-secondary/50" onclick="selectMethod(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-on-surface text-3xl" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<p class="font-headline-sm text-on-surface font-semibold">Credit/Debit Card</p>
+<p class="text-caption text-on-surface-variant">Visa, Mastercard, RuPay, Amex</p>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline group-hover:border-secondary transition-colors flex items-center justify-center">
+<div class="inner-dot w-2.5 h-2.5 rounded-full bg-secondary scale-0 transition-transform"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Section: Net Banking -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-wider">Other Methods</h3>
+<div class="space-y-sm">
+<div class="payment-card group cursor-pointer flex items-center justify-between p-md bg-surface-container border border-outline-variant rounded-xl transition-all hover:border-secondary/50" onclick="selectMethod(this)">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-on-surface text-3xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-headline-sm text-on-surface font-semibold">Net Banking</p>
+<p class="text-caption text-on-surface-variant">All major Indian banks supported</p>
+</div>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline group-hover:border-secondary transition-colors flex items-center justify-center">
+<div class="inner-dot w-2.5 h-2.5 rounded-full bg-secondary scale-0 transition-transform"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Badge -->
+<div class="flex items-center justify-center gap-sm mt-xl opacity-60">
+<span class="material-symbols-outlined text-sm" data-icon="shield">shield</span>
+<span class="text-caption font-label-md">PCI-DSS COMPLIANT SECURE CHECKOUT</span>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant p-md z-50">
+<div class="max-w-2xl mx-auto flex items-center justify-between gap-md">
+<div class="hidden sm:block">
+<p class="text-caption text-on-surface-variant">Total Amount</p>
+<p class="text-headline-md font-bold text-on-surface">₹149</p>
+</div>
+<button class="w-full sm:w-auto flex-grow sm:flex-none py-md px-xl bg-secondary text-on-secondary font-bold text-body-lg rounded-xl gold-glow hover:bg-secondary-container transition-all active:scale-95 flex items-center justify-center gap-sm">
+<span>Pay Now ₹149</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+<script>
+        function selectMethod(element) {
+            // Remove active classes from all cards
+            document.querySelectorAll('.payment-card').forEach(card => {
+                card.classList.remove('active-payment-card');
+                card.querySelector('.radio-indicator').classList.remove('border-secondary');
+                card.querySelector('.radio-indicator').classList.add('border-outline');
+                card.querySelector('.inner-dot').classList.remove('scale-100');
+                card.querySelector('.inner-dot').classList.add('scale-0');
+            });
+
+            // Add active classes to selected card
+            element.classList.add('active-payment-card');
+            const indicator = element.querySelector('.radio-indicator');
+            indicator.classList.remove('border-outline');
+            indicator.classList.add('border-secondary');
+            
+            const dot = element.querySelector('.inner-dot');
+            dot.classList.remove('scale-0');
+            dot.classList.add('scale-100');
+
+            // Haptic-like feedback animation
+            element.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        // Initialize first option as selected
+        document.addEventListener('DOMContentLoaded', () => {
+            selectMethod(document.querySelector('.payment-card'));
+        });
+    </script>
+</body></html>

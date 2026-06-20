@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome to EduMastery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Source+Sans+3:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#131b2e",
+                    "tertiary": "#b7c8e1",
+                    "on-tertiary-container": "#1a2b3e",
+                    "primary-fixed": "#d8e2ff",
+                    "tertiary-container": "#8292aa",
+                    "surface-container-high": "#222a3d",
+                    "surface-container-highest": "#2d3449",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#283044",
+                    "on-background": "#dae2fd",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-bright": "#31394d",
+                    "secondary-fixed": "#ffddb8",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "primary-fixed-dim": "#adc6ff",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "error-container": "#93000a",
+                    "outline-variant": "#424754",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-secondary-container": "#5b3800",
+                    "inverse-surface": "#dae2fd",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface": "#0b1326",
+                    "on-tertiary": "#213145",
+                    "surface-variant": "#2d3449",
+                    "primary-container": "#4d8eff",
+                    "surface-container-lowest": "#060e20",
+                    "on-secondary": "#472a00",
+                    "on-primary-fixed": "#001a42",
+                    "on-error": "#690005",
+                    "on-primary-container": "#00285d",
+                    "on-primary-fixed-variant": "#004395",
+                    "error": "#ffb4ab",
+                    "background": "#0b1326",
+                    "surface-tint": "#adc6ff",
+                    "on-secondary-fixed": "#2a1700",
+                    "surface-container": "#171f33",
+                    "on-surface": "#dae2fd",
+                    "inverse-primary": "#005ac2",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-dim": "#0b1326",
+                    "outline": "#8c909f",
+                    "secondary": "#ffb95f",
+                    "secondary-container": "#ee9800",
+                    "primary": "#adc6ff",
+                    "on-primary": "#002e6a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Public Sans"],
+                    "headline-xl": ["Public Sans"],
+                    "label-md": ["\"Source Sans 3\""],
+                    "headline-md": ["Public Sans"],
+                    "headline-lg-mobile": ["Public Sans"],
+                    "caption": ["Public Sans"],
+                    "headline-lg": ["Public Sans"],
+                    "body-lg": ["Public Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden flex flex-col">
+<canvas class="confetti-canvas" id="confetti"></canvas>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-xl py-xl relative">
+<!-- Background Atmospheric Element -->
+<div class="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+<div class="absolute -top-[10%] -right-[10%] w-[500px] h-[500px] bg-primary rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-[10%] -left-[10%] w-[400px] h-[400px] bg-secondary rounded-full blur-[100px]"></div>
+</div>
+<div class="max-w-4xl w-full z-20 flex flex-col items-center text-center">
+<!-- Logo Section -->
+<div class="mb-lg animate-bounce">
+<div class="w-24 h-24 md:w-32 md:h-32 bg-surface-container-high rounded-full border border-outline-variant p-4 flex items-center justify-center shadow-2xl relative">
+<img class="w-full h-full object-contain" data-alt="A sophisticated digital mascot illustration of a minimalist panda wearing academic glasses, designed in a sleek corporate modernism style. The panda is rendered with clean geometric lines, primarily in deep midnight navy and soft off-white, with subtle primary blue accents. The lighting is focused and professional, against a dark, high-contrast background that emphasizes achievement and intellectual precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2J82BRunf3sTT9aSsOD1LtqsEIUHAW9f8hGzR03sj0bpJdHCs0S_KD4OfSKkrO89usG6HJmYttfhbkbe9DulhaDio9hw-DRjPXu8VKjnSilNrb0tiU76i3LrcRHn1NoXlaGresJacH121caIOh2PoDkuf6FiX9J1r0cQSnJGI_cpZq23qNZ4RicN9XDUHHQ0FlaW6V0WPEhAFr5AJSOIwaIywBNlbyHVHbQw47KjLXdPzU7Ee2KfB7kEE2C8jmiM_0DQGLDOJpxo6"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary p-2 rounded-full border-4 border-background text-on-secondary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</div>
+<!-- Welcome Message -->
+<div class="space-y-base mb-xl">
+<h1 class="font-headline-xl text-headline-xl text-on-background tracking-tight">
+                    Welcome to the <span class="text-primary">Panda Family!</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Your journey to master new skills begins here. We've prepared everything you need to succeed in your academic and professional goals.
+                </p>
+</div>
+<!-- Next Steps Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter w-full mb-xl">
+<!-- Action Card 1 -->
+<div class="bento-card p-lg bg-surface-container rounded-xl border border-outline-variant flex flex-col items-start text-left group cursor-pointer hover:border-primary transition-colors">
+<div class="p-md bg-primary-container/20 rounded-lg mb-md text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">target</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">Set your study goal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Define your milestones and let us build a personalized roadmap for your success.</p>
+<div class="mt-auto flex items-center text-primary font-label-md">
+                        Configure Now <span class="material-symbols-outlined ml-xs">arrow_forward</span>
+</div>
+</div>
+<!-- Action Card 2 -->
+<div class="bento-card p-lg bg-surface-container rounded-xl border border-outline-variant flex flex-col items-start text-left group cursor-pointer hover:border-secondary transition-colors">
+<div class="p-md bg-secondary-container/20 rounded-lg mb-md text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">Explore free lectures</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Dive into our library of world-class content curated by industry experts.</p>
+<div class="mt-auto flex items-center text-secondary font-label-md">
+                        Start Browsing <span class="material-symbols-outlined ml-xs">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="bg-primary hover:bg-primary-container text-on-primary font-headline-md px-xl py-lg rounded-full flex items-center gap-md transition-all active:scale-95 shadow-lg shadow-primary/20">
+                Get Started
+                <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+<p class="mt-lg font-caption text-caption text-outline">
+                By continuing, you agree to our terms of service and community guidelines.
+            </p>
+</div>
+</main>
+<!-- Success Stats Snippet (Visual Flavour) -->
+<div class="fixed bottom-lg left-lg hidden lg:flex items-center gap-md p-md bg-surface-container-low/80 backdrop-blur-md rounded-xl border border-outline-variant">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-variant"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-variant"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-variant"></div>
+</div>
+<div class="text-left">
+<p class="font-label-md text-label-md text-on-surface">12k+ Students</p>
+<p class="font-caption text-caption text-on-surface-variant">Active this hour</p>
+</div>
+</div>
+<script>
+        // Simple Confetti Animation
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 8 + 4;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 2 - 1;
+                this.color = ['#adc6ff', '#ffb95f', '#4d8eff', '#ee9800'][Math.floor(Math.random() * 4)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    particles.push(new Particle());
+                }, i * 20);
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => {
+                p.update();
+                p.draw();
+                if (p.y > canvas.height) {
+                    particles.splice(i, 1);
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        // Micro-interaction for Get Started button
+        document.querySelector('button').addEventListener('click', function() {
+            this.innerHTML = 'Launching... <span class="material-symbols-outlined animate-spin">sync</span>';
+            setTimeout(() => {
+                // Simulation of navigation
+                window.location.reload(); 
+            }, 800);
+        });
+    </script>
+</body></html>

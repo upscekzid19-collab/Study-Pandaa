@@ -1,0 +1,18 @@
+# UPSC/JKPSC Education App PRD (Phase 1 Focus)
+
+## Project Overview
+A budget-friendly, high-utility education app for UPSC and JKPSC aspirants. Phase 1 focuses on content delivery (Videos/PDFs), Daily Current Affairs, and basic engagement (Daily Quiz/Streak).
+
+## Core Screen List (Mobile)
+1.  **Home Screen**: Exam selection (UPSC/JKPSC), Streak display, Daily Current Affairs summary, New Videos, Recommended PDFs, and Quick Links.
+2.  **Videos Tab**: Category filters, search, and a list of video lectures with progress tracking.
+3.  **PDFs Tab**: Category folders, search, and document list with download/view options.
+4.  **Quiz Tab**: Daily 5-MCQ quiz, subject tests, and mock tests entry point.
+5.  **Progress Tab**: Visual dashboard for streaks, badges, and learning statistics.
+6.  **Profile Tab**: User details, subscription status, and app settings.
+
+## Design Direction
+- **Primary Color**: Professional Navy Blue or Deep Forest Green (authority/education).
+- **Accent Color**: Amber or Gold for streaks and premium features.
+- **Typography**: Clean, readable Sans-serif (Inter or Roboto) for long-form study material.
+- **Layout**: Bottom navigation for easy thumb access. Card-based UI for content chunks.

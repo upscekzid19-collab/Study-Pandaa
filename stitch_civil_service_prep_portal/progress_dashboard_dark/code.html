@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduMastery - Progress Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#b6c6f0",
+                    "on-secondary": "#191c1e",
+                    "tertiary-fixed": "#ffddb5",
+                    "tertiary-fixed-dim": "#eabf8a",
+                    "primary-fixed-dim": "#b6c6f0",
+                    "surface-bright": "#1a1c1e",
+                    "on-primary-container": "#d8e2ff",
+                    "on-primary": "#031636",
+                    "surface-dim": "#0e1113",
+                    "on-secondary-container": "#261a00",
+                    "on-tertiary": "#2a1800",
+                    "background": "#0b0e11",
+                    "primary": "#d8e2ff",
+                    "on-error": "#690005",
+                    "tertiary": "#ffddb5",
+                    "inverse-primary": "#031636",
+                    "secondary-fixed": "#ffdfa0",
+                    "on-tertiary-fixed-variant": "#ffddb5",
+                    "surface": "#111418",
+                    "on-background": "#e2e2e6",
+                    "secondary-fixed-dim": "#fbbc00",
+                    "inverse-on-surface": "#191c1e",
+                    "on-surface": "#e2e2e6",
+                    "tertiary-container": "#5e4117",
+                    "on-tertiary-fixed": "#2a1800",
+                    "outline-variant": "#44474e",
+                    "on-primary-fixed": "#001a41",
+                    "secondary-container": "#ffbf00",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#33353a",
+                    "primary-fixed": "#d8e2ff",
+                    "inverse-surface": "#e2e2e6",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "error-container": "#93000a",
+                    "outline": "#8e9199",
+                    "surface-container-lowest": "#0b0e11",
+                    "primary-container": "#1a2b4c",
+                    "surface-container": "#1d2024",
+                    "secondary": "#ffbf00",
+                    "surface-container-high": "#282a2f",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#44474e",
+                    "on-secondary-fixed": "#261a00",
+                    "on-surface-variant": "#c5c6cf",
+                    "surface-tint": "#b6c6f0",
+                    "on-tertiary-container": "#ffddb5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "16px",
+                    "md": "24px",
+                    "margin-mobile": "16px",
+                    "xl": "48px",
+                    "gutter": "16px",
+                    "margin-desktop": "64px",
+                    "lg": "32px",
+                    "base": "4px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Public Sans"],
+                    "label-md": ["Public Sans"],
+                    "headline-md": ["Public Sans"],
+                    "label-sm": ["Public Sans"],
+                    "body-lg": ["Public Sans"],
+                    "headline-sm": ["Public Sans"],
+                    "display-lg": ["Public Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .glass-card {
+            background: rgba(30, 33, 37, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-24 dark">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-4 py-2 max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a student in their mid-20s, looking confident and focused. The background is a blurred library setting with soft, warm lighting. The overall style is clean and academic, reflecting a high-stakes competitive exam environment with a palette of deep navy and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNn2SH047iTyYxPwGy_i9xfFE0o-QpG2ct1b2sl-I1pyxah1npsThAgiBRj02RnN96-fudM8hb6lQ6USZGQq6FH7cHPBUk9QLI2Lun36psex-OoKY8IpgKIXzVA4pPDoeHow_ijogaaWAadhUAX8sqgxVELx1m1yxscrJ4QMXiOLgI82Bb44APyLtZDSTnwVt5wP4ptj0KVEWNv5AOxsmaGbtNwwTxN6OZzotObKz8lwJpUBZbGjLUuxCRfqtTh6pCgLF9oTxzy-iD"/>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">EduMastery</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 pt-20 pb-8">
+<!-- Header Section -->
+<section class="mb-lg">
+<h1 class="font-display-lg text-display-lg text-primary mb-xs">Mastery Progress</h1>
+<p class="font-body-md text-on-surface-variant">Track your journey toward the UPSC/JKPSC services.</p>
+</section>
+<div class="bento-grid">
+<!-- Streak Dashboard (Large) -->
+<div class="col-span-full md:col-span-2 glass-card rounded-xl p-md flex flex-col justify-between overflow-hidden relative">
+<div class="z-10">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Study Streak</h2>
+<p class="font-label-md text-on-surface-variant">7 Days Consistent</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-2 rounded-lg flex items-center gap-2 animate-bounce shadow-lg shadow-secondary-container/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-sm">Weekly Warrior</span>
+</div>
+</div>
+<div class="flex justify-between gap-2 mt-4">
+<!-- 7-day visualization -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container border border-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">M</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container border border-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">T</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container border border-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">W</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container border border-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">T</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container border border-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">F</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container border border-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">S</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container border-2 border-secondary ring-4 ring-secondary/20 shadow-lg shadow-secondary/40">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm font-bold text-secondary">S</span>
+</div>
+</div>
+</div>
+<!-- Background decoration -->
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[160px] text-primary">trending_up</span>
+</div>
+</div>
+<!-- Stats: Videos (Medium) -->
+<div class="glass-card rounded-xl p-md flex flex-col items-center justify-center text-center">
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-container-highest stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-primary stroke-current progress-ring__circle" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface">142</span>
+<span class="font-label-sm text-on-surface-variant">Watched</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Total Videos</h3>
+<p class="font-label-md text-on-surface-variant">75% of Syllabus</p>
+</div>
+<!-- Stats: PDF (Small) -->
+<div class="glass-card rounded-xl p-md flex flex-col justify-between">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md border border-outline-variant">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div>
+<h4 class="font-display-lg text-display-lg text-primary">84</h4>
+<p class="font-headline-sm text-headline-sm text-on-surface">PDFs Downloaded</p>
+</div>
+</div>
+<!-- Quiz Scores Chart (Large) -->
+<div class="col-span-full md:col-span-2 glass-card rounded-xl p-md">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="font-headline-sm text-headline-sm text-primary">Quiz Performance</h2>
+<select class="bg-surface-container-high border-none font-label-md text-on-surface rounded-lg px-3 py-1 focus:ring-1 focus:ring-primary cursor-pointer">
+<option>Last 5 Tests</option>
+<option>Current Month</option>
+</select>
+</div>
+<div class="h-48 w-full flex items-end justify-between px-2 gap-4">
+<!-- Fake Bar Chart -->
+<div class="flex flex-col items-center w-full gap-2 group">
+<div class="w-full bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 relative" style="height: 60%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-primary text-on-primary px-2 py-1 rounded text-[10px] font-bold">72%</div>
+</div>
+<span class="font-label-sm text-on-surface-variant">T1</span>
+</div>
+<div class="flex flex-col items-center w-full gap-2 group">
+<div class="w-full bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 relative" style="height: 45%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-primary text-on-primary px-2 py-1 rounded text-[10px] font-bold">55%</div>
+</div>
+<span class="font-label-sm text-on-surface-variant">T2</span>
+</div>
+<div class="flex flex-col items-center w-full gap-2 group">
+<div class="w-full bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 relative" style="height: 85%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-primary text-on-primary px-2 py-1 rounded text-[10px] font-bold">92%</div>
+</div>
+<span class="font-label-sm text-on-surface-variant">T3</span>
+</div>
+<div class="flex flex-col items-center w-full gap-2 group">
+<div class="w-full bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 relative" style="height: 70%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-primary text-on-primary px-2 py-1 rounded text-[10px] font-bold">80%</div>
+</div>
+<span class="font-label-sm text-on-surface-variant">T4</span>
+</div>
+<div class="flex flex-col items-center w-full gap-2 group">
+<div class="w-full bg-primary rounded-t-lg transition-all hover:bg-primary/80 relative shadow-lg shadow-primary/20" style="height: 95%;">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-primary text-on-primary px-2 py-1 rounded text-[10px] font-bold">98%</div>
+</div>
+<span class="font-label-sm text-primary font-bold">Latest</span>
+</div>
+</div>
+</div>
+<!-- Badge Collection (Large) -->
+<div class="col-span-full md:col-span-2 glass-card rounded-xl p-md">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">Badge Vault</h2>
+<span class="font-label-sm text-on-surface-variant">12 / 20 Unlocked</span>
+</div>
+<div class="grid grid-cols-4 sm:grid-cols-5 gap-4">
+<!-- Earned -->
+<div class="aspect-square rounded-full bg-secondary-container flex items-center justify-center relative group cursor-help shadow-lg shadow-secondary/30">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<div class="absolute invisible group-hover:visible bg-surface-container-highest text-on-surface text-[10px] p-2 rounded-lg -top-12 left-1/2 -translate-x-1/2 w-24 text-center z-10 shadow-xl border border-outline-variant">Historian: Completed Modern History</div>
+</div>
+<div class="aspect-square rounded-full bg-secondary-container flex items-center justify-center relative group cursor-help shadow-lg shadow-secondary/30">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">public</span>
+<div class="absolute invisible group-hover:visible bg-surface-container-highest text-on-surface text-[10px] p-2 rounded-lg -top-12 left-1/2 -translate-x-1/2 w-24 text-center z-10 shadow-xl border border-outline-variant">Geographer: Map Master</div>
+</div>
+<div class="aspect-square rounded-full bg-secondary-container flex items-center justify-center relative group cursor-help shadow-lg shadow-secondary/30">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<div class="absolute invisible group-hover:visible bg-surface-container-highest text-on-surface text-[10px] p-2 rounded-lg -top-12 left-1/2 -translate-x-1/2 w-24 text-center z-10 shadow-xl border border-outline-variant">Early Bird: Study before 6 AM</div>
+</div>
+<div class="aspect-square rounded-full bg-secondary-container flex items-center justify-center relative group cursor-help shadow-lg shadow-secondary/30">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">shield</span>
+<div class="absolute invisible group-hover:visible bg-surface-container-highest text-on-surface text-[10px] p-2 rounded-lg -top-12 left-1/2 -translate-x-1/2 w-24 text-center z-10 shadow-xl border border-outline-variant">Polity Pro: Article Master</div>
+</div>
+<!-- Locked -->
+<div class="aspect-square rounded-full bg-surface-container border border-dashed border-outline flex items-center justify-center grayscale opacity-40 relative group cursor-not-allowed">
+<span class="material-symbols-outlined text-outline">lock</span>
+<div class="absolute invisible group-hover:visible bg-surface-container-highest text-on-surface text-[10px] p-2 rounded-lg -top-12 left-1/2 -translate-x-1/2 w-24 text-center z-10 shadow-xl border border-outline-variant">Economist: Finish Macro Economy</div>
+</div>
+<div class="aspect-square rounded-full bg-surface-container border border-dashed border-outline flex items-center justify-center grayscale opacity-40 relative group cursor-not-allowed">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+<div class="aspect-square rounded-full bg-surface-container border border-dashed border-outline flex items-center justify-center grayscale opacity-40 relative group cursor-not-allowed">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+<div class="aspect-square rounded-full bg-surface-container border border-dashed border-outline flex items-center justify-center grayscale opacity-40 relative group cursor-not-allowed">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest border-t border-outline-variant shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all duration-150" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-sm text-label-sm">Videos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all duration-150" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">PDFs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all duration-150" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-sm text-label-sm">Quiz</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-primary rounded-full px-4 py-1 transition-transform duration-150 scale-95 border border-primary/20" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</a>
+</nav>
+<script>
+    // Micro-interactions for bar chart hover
+    document.querySelectorAll('.group').forEach(bar => {
+        bar.addEventListener('mouseenter', () => {
+            const inner = bar.querySelector('.bg-primary\\/20');
+            if (inner) inner.style.backgroundColor = 'rgba(216, 226, 255, 0.4)';
+        });
+        bar.addEventListener('mouseleave', () => {
+            const inner = bar.querySelector('.bg-primary\\/20');
+            if (inner) inner.style.backgroundColor = 'rgba(216, 226, 255, 0.2)';
+        });
+    });
+
+    // Simple progress ring animation on load
+    window.addEventListener('DOMContentLoaded', () => {
+        const circle = document.querySelector('.progress-ring__circle');
+        if (circle) {
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            // Target: 75% completion
+            const offset = circumference - (0.75 * circumference);
+            setTimeout(() => {
+                circle.style.strokeDashoffset = offset;
+            }, 300);
+        }
+    });
+</script>
+</body></html>

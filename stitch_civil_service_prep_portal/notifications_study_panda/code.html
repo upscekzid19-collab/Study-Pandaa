@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduMastery - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Source+Sans+3:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "primary-fixed-dim": "#adc6ff",
+                        "error-container": "#93000a",
+                        "primary": "#adc6ff",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-container-high": "#222a3d",
+                        "tertiary-container": "#8292aa",
+                        "on-surface": "#dae2fd",
+                        "on-primary": "#002e6a",
+                        "secondary-fixed": "#ffddb8",
+                        "outline-variant": "#424754",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "on-secondary-fixed": "#2a1700",
+                        "surface-dim": "#0b1326",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-background": "#dae2fd",
+                        "background": "#0b1326",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "secondary": "#ffb95f",
+                        "on-secondary-container": "#5b3800",
+                        "inverse-primary": "#005ac2",
+                        "surface-container-lowest": "#060e20",
+                        "on-surface-variant": "#c2c6d6",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dae2fd",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#ee9800",
+                        "outline": "#8c909f",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-tint": "#adc6ff",
+                        "tertiary": "#b7c8e1",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-container": "#1a2b3e",
+                        "surface-bright": "#31394d",
+                        "surface-container-low": "#131b2e",
+                        "surface-variant": "#2d3449",
+                        "surface-container-highest": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "primary-container": "#4d8eff",
+                        "on-error": "#690005",
+                        "surface": "#0b1326",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-primary-container": "#00285d",
+                        "on-tertiary": "#213145",
+                        "on-secondary": "#472a00",
+                        "inverse-on-surface": "#283044"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "caption": ["Public Sans"],
+                        "label-md": ["Source Sans 3"],
+                        "headline-lg": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            font-family: 'Public Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .notification-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #334155;
+        }
+        .notification-card:hover {
+            background-color: #222a3d;
+            border-color: #4d8eff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot {
+            box-shadow: 0 0 8px #ffb95f;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img alt="Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIgAqVAJUXzOPSdjf7fmvshIa37Xy_atRO0dlTCv6vuQ5PpR5SzIQ_AkeTj8QrTMfhlBf7N0gEaB5Bi1CW94mB1veHWSXOfbmyyS8-1PMo9qFEFg5-4QUD1t1eORk-k9vuwLjRv3bbIWd7gtqSv_wDOXd8cZ5j5wXHkhi8FtRoFV-ywuefyYngP5PAB1xGa0cT8fY90YR7xtxp-mYSFOto1pFqXQm8FY5jwooQ7vM_SfL7tiESIJY1yecyBIy81k7Q1JV1DHnCp00r"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">EduMastery</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest p-2 rounded-full transition-colors duration-200">
+                    notifications
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-20 px-4 max-w-2xl mx-auto">
+<!-- Header Actions -->
+<div class="flex justify-between items-center mb-8 mt-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Notifications</h2>
+<p class="font-body-md text-on-surface-variant">Stay updated with your learning journey</p>
+</div>
+<button class="font-label-md text-label-md text-secondary hover:bg-secondary/10 px-4 py-2 rounded-full transition-all border border-secondary/20">
+                Mark all as read
+            </button>
+</div>
+<!-- Watermark Illustration (Subtle Background) -->
+<div class="fixed top-1/3 left-1/2 -translate-x-1/2 opacity-[0.03] pointer-events-none select-none z-0">
+<img alt="Background Motif" class="w-[500px] grayscale invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIgAqVAJUXzOPSdjf7fmvshIa37Xy_atRO0dlTCv6vuQ5PpR5SzIQ_AkeTj8QrTMfhlBf7N0gEaB5Bi1CW94mB1veHWSXOfbmyyS8-1PMo9qFEFg5-4QUD1t1eORk-k9vuwLjRv3bbIWd7gtqSv_wDOXd8cZ5j5wXHkhi8FtRoFV-ywuefyYngP5PAB1xGa0cT8fY90YR7xtxp-mYSFOto1pFqXQm8FY5jwooQ7vM_SfL7tiESIJY1yecyBIy81k7Q1JV1DHnCp00r"/>
+</div>
+<div class="relative z-10 space-y-8">
+<!-- Group: Today -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="font-label-md text-label-md text-tertiary-fixed tracking-widest uppercase">Today</span>
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+</div>
+<div class="space-y-3">
+<!-- Notification Item 1 -->
+<div class="notification-card bg-surface-container-low rounded-xl p-4 flex gap-4 items-start relative overflow-hidden">
+<div class="absolute top-4 right-4 w-2 h-2 bg-secondary rounded-full active-dot"></div>
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface">New Lecture: Indian Polity</h3>
+<span class="font-caption text-caption text-on-surface-variant">2m ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">The latest session on Fundamental Rights is now live. Join the discussion and complete the assessment.</p>
+</div>
+</div>
+<!-- Notification Item 2 -->
+<div class="notification-card bg-surface-container-low rounded-xl p-4 flex gap-4 items-start relative">
+<div class="absolute top-4 right-4 w-2 h-2 bg-secondary rounded-full active-dot"></div>
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Daily Current Affairs Updated</h3>
+<span class="font-caption text-caption text-on-surface-variant">5h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">New PDFs for the G20 Summit analysis and economic indicators have been added to your library.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Group: Earlier -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="font-label-md text-label-md text-tertiary-fixed tracking-widest uppercase">Earlier</span>
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+</div>
+<div class="space-y-3">
+<!-- Notification Item 3 -->
+<div class="notification-card bg-surface-dim/50 rounded-xl p-4 flex gap-4 items-start border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface/80">AI Tutor Tip</h3>
+<span class="font-caption text-caption text-on-surface-variant">1d ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/70">"Panda suggests: Try revising the 'Parliament' notes before taking the Weekly Quiz for better retention!"</p>
+</div>
+</div>
+<!-- Notification Item 4 -->
+<div class="notification-card bg-surface-dim/50 rounded-xl p-4 flex gap-4 items-start border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary/60">quiz</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface/80">Quiz Result Available</h3>
+<span class="font-caption text-caption text-on-surface-variant">2d ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/70">You scored 85% in the Ancient History Mock Test. Review your incorrect answers in the Progress tab.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-sm text-label-sm">Videos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">PDFs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-sm text-label-sm">Quiz</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for mark all as read
+        document.querySelector('button.text-secondary').addEventListener('click', function() {
+            const dots = document.querySelectorAll('.active-dot');
+            dots.forEach(dot => {
+                dot.style.opacity = '0';
+                dot.style.transform = 'scale(0)';
+                dot.style.transition = 'all 0.3s ease';
+            });
+            this.textContent = 'All Caught Up';
+            this.classList.add('opacity-50', 'pointer-events-none');
+        });
+
+        // Card hover effects
+        const cards = document.querySelectorAll('.notification-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

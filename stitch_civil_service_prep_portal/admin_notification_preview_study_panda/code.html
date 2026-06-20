@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Panda Admin - Notification Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Source+Sans+3:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "primary-fixed-dim": "#adc6ff",
+                        "error-container": "#93000a",
+                        "primary": "#adc6ff",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-container-high": "#222a3d",
+                        "tertiary-container": "#8292aa",
+                        "on-surface": "#dae2fd",
+                        "on-primary": "#002e6a",
+                        "secondary-fixed": "#ffddb8",
+                        "outline-variant": "#424754",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "on-secondary-fixed": "#2a1700",
+                        "surface-dim": "#0b1326",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-background": "#dae2fd",
+                        "background": "#0b1326",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "secondary": "#ffb95f",
+                        "on-secondary-container": "#5b3800",
+                        "inverse-primary": "#005ac2",
+                        "surface-container-lowest": "#060e20",
+                        "on-surface-variant": "#c2c6d6",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dae2fd",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#ee9800",
+                        "outline": "#8c909f",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-tint": "#adc6ff",
+                        "tertiary": "#b7c8e1",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-container": "#1a2b3e",
+                        "surface-bright": "#31394d",
+                        "surface-container-low": "#131b2e",
+                        "surface-variant": "#2d3449",
+                        "surface-container-highest": "#2d3449",
+                        "on-primary-fixed": "#001a42",
+                        "primary-container": "#4d8eff",
+                        "on-error": "#690005",
+                        "surface": "#0b1326",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-primary-container": "#00285d",
+                        "on-tertiary": "#213145",
+                        "on-secondary": "#472a00",
+                        "inverse-on-surface": "#283044"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "caption": ["Public Sans"],
+                        "label-md": ["\"Source Sans 3\""],
+                        "headline-lg": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .phone-mockup {
+            aspect-ratio: 9 / 19.5;
+            max-width: 320px;
+            margin: 0 auto;
+            border: 12px solid #1e293b;
+            border-radius: 40px;
+            position: relative;
+            background: #0f172a;
+            overflow: hidden;
+        }
+        .custom-toggle:checked + .toggle-dot {
+            transform: translateX(100%);
+            background-color: #ffb95f;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-background w-full top-0 z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-headline-md">menu_book</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Study Panda</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Login</a>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 border-b-2 border-primary pb-1" href="#">Admin</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Help</a>
+</nav>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-xl py-lg">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Notification Preview</h2>
+<p class="text-on-surface-variant font-body-md">Review and schedule alerts before they reach your students.</p>
+</div>
+<div class="bento-grid">
+<!-- Left Panel: Preview Canvas -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-low border border-outline-variant p-lg rounded-xl flex items-center justify-center relative overflow-hidden">
+<!-- Background Atmospheric Glow -->
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+<div class="w-full max-w-md">
+<p class="font-label-md text-label-md text-on-surface-variant mb-6 text-center uppercase tracking-widest">Mobile Device Preview</p>
+<div class="phone-mockup border-4 border-slate-700/50 shadow-2xl">
+<!-- Lock Screen Content -->
+<div class="p-6 h-full flex flex-col pt-16">
+<div class="text-center mb-12">
+<span class="text-headline-xl font-headline-xl text-white block">09:41</span>
+<span class="text-body-md text-slate-400">Tuesday, October 24</span>
+</div>
+<!-- MOCK NOTIFICATION CARD -->
+<div class="bg-surface-container-highest border-l-4 border-secondary p-4 rounded-xl shadow-lg transition-transform hover:scale-[1.02] cursor-default">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-white flex-shrink-0">
+<img alt="Study Panda Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIgAqVAJUXzOPSdjf7fmvshIa37Xy_atRO0dlTCv6vuQ5PpR5SzIQ_AkeTj8QrTMfhlBf7N0gEaB5Bi1CW94mB1veHWSXOfbmyyS8-1PMo9qFEFg5-4QUD1t1eORk-k9vuwLjRv3bbIWd7gtqSv_wDOXd8cZ5j5wXHkhi8FtRoFV-ywuefyYngP5PAB1xGa0cT8fY90YR7xtxp-mYSFOto1pFqXQm8FY5jwooQ7vM_SfL7tiESIJY1yecyBIy81k7Q1JV1DHnCp00r"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-1">
+<span class="font-bold text-sm text-secondary">STUDY PANDA</span>
+<span class="text-[10px] text-slate-400">now</span>
+</div>
+<h4 class="text-white font-bold text-sm leading-tight">New Course Milestone! 🎓</h4>
+<p class="text-slate-300 text-xs mt-1">"Advanced Quantum Dynamics" has been added to your dashboard. Start your journey today!</p>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">lock</span>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Face ID</p>
+<p class="text-slate-400 text-[10px]">Unlock to view more notifications</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pb-4 flex justify-center gap-16">
+<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">flashlight_on</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">photo_camera</span>
+</div>
+</div>
+<div class="w-32 h-1 bg-white/20 mx-auto rounded-full mt-2"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Controls -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-lg">
+<!-- Notification Settings -->
+<section class="bg-surface-container p-lg rounded-xl border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">settings</span>
+                        Notification Settings
+                    </h3>
+<div class="space-y-6">
+<!-- Toggle Group -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">notifications_active</span>
+<div>
+<p class="font-bold text-on-surface">Send Push Notification</p>
+<p class="text-caption text-on-surface-variant">Immediate mobile delivery</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer-checked:bg-secondary-container/20 border border-outline"></div>
+<div class="absolute left-1 top-1 bg-outline w-4 h-4 rounded-full transition-transform toggle-dot"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+<div>
+<p class="font-bold text-on-surface">Email Alert</p>
+<p class="text-caption text-on-surface-variant">Send a copy to student email</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer-checked:bg-secondary-container/20 border border-outline"></div>
+<div class="absolute left-1 top-1 bg-outline w-4 h-4 rounded-full transition-transform toggle-dot"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">sms</span>
+<div>
+<p class="font-bold text-on-surface">SMS Alert</p>
+<p class="text-caption text-on-surface-variant">Standard carrier rates apply</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer-checked:bg-secondary-container/20 border border-outline"></div>
+<div class="absolute left-1 top-1 bg-outline w-4 h-4 rounded-full transition-transform toggle-dot"></div>
+</label>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant my-8"></div>
+<!-- Schedule Selection -->
+<div>
+<p class="font-bold text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+                            Schedule Notification
+                        </p>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-caption text-on-surface-variant mb-1 uppercase tracking-wider">Date</label>
+<input class="w-full bg-surface-dim border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="date" value="2024-10-24"/>
+</div>
+<div>
+<label class="block text-caption text-on-surface-variant mb-1 uppercase tracking-wider">Time</label>
+<input class="w-full bg-surface-dim border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="time" value="09:41"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Section -->
+<div class="flex flex-col gap-3">
+<button class="bg-secondary-container text-on-secondary-container font-headline-md text-body-lg py-4 rounded-xl flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-secondary-container/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+                        Confirm &amp; Push Live
+                    </button>
+<button class="bg-transparent text-on-surface border border-outline-variant py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-container-high active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">edit</span>
+                        Edit Notification Content
+                    </button>
+</div>
+<!-- Info Box -->
+<div class="bg-surface-container-low p-4 rounded-lg border border-primary/20 flex gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-caption text-on-surface-variant">This notification will be broadcast to <span class="text-primary font-bold">1,248 enrolled students</span> across the "Engineering" faculty.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-4 bg-surface-container shadow-2xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">login</span>
+<span class="font-label-md text-[10px]">Login</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-label-md text-[10px]">Admin</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-label-md text-[10px]">Help</span>
+</div>
+</footer>
+<script>
+        // Micro-interaction for button press
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.98)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

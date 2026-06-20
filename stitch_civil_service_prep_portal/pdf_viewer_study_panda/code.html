@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Panda - PDF Viewer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&family=Source+Sans+3:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&family=Source+Sans+3:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #131b2e;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #424754;
+      border-radius: 10px;
+    }
+    .pdf-page-shadow {
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+    .gold-shimmer {
+      background: linear-gradient(90deg, #ffb95f 0%, #ffddb8 50%, #ffb95f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#dae2fd",
+            "error-container": "#93000a",
+            "surface-dim": "#0b1326",
+            "surface-container-lowest": "#060e20",
+            "on-tertiary-fixed-variant": "#38485d",
+            "on-primary-fixed": "#001a42",
+            "on-tertiary-container": "#1a2b3e",
+            "surface-tint": "#adc6ff",
+            "background": "#0b1326",
+            "tertiary-container": "#8292aa",
+            "primary": "#adc6ff",
+            "on-tertiary": "#213145",
+            "on-secondary-fixed-variant": "#653e00",
+            "on-background": "#dae2fd",
+            "primary-fixed": "#d8e2ff",
+            "secondary": "#ffb95f",
+            "outline": "#8c909f",
+            "surface-container-highest": "#2d3449",
+            "outline-variant": "#424754",
+            "on-secondary": "#472a00",
+            "secondary-fixed-dim": "#ffb95f",
+            "tertiary-fixed": "#d3e4fe",
+            "secondary-fixed": "#ffddb8",
+            "on-primary-fixed-variant": "#004395",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#c2c6d6",
+            "on-error-container": "#ffdad6",
+            "tertiary": "#b7c8e1",
+            "surface-container-high": "#222a3d",
+            "surface-variant": "#2d3449",
+            "on-primary": "#002e6a",
+            "surface": "#0b1326",
+            "on-error": "#690005",
+            "tertiary-fixed-dim": "#b7c8e1",
+            "primary-fixed-dim": "#adc6ff",
+            "inverse-on-surface": "#283044",
+            "secondary-container": "#ee9800",
+            "on-secondary-container": "#5b3800",
+            "surface-container-low": "#131b2e",
+            "on-primary-container": "#00285d",
+            "on-surface": "#dae2fd",
+            "on-secondary-fixed": "#2a1700",
+            "inverse-primary": "#005ac2",
+            "on-tertiary-fixed": "#0b1c30",
+            "surface-bright": "#31394d",
+            "primary-container": "#4d8eff",
+            "surface-container": "#171f33"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "lg": "24px",
+            "gutter": "24px",
+            "sm": "8px",
+            "xs": "4px",
+            "margin-mobile": "16px",
+            "container-max": "1280px",
+            "xl": "40px",
+            "base": "4px",
+            "md": "16px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Public Sans"],
+            "label-md": ["\"Source Sans 3\""],
+            "headline-md": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "body-lg": ["Public Sans"],
+            "headline-xl": ["Public Sans"],
+            "caption": ["Public Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim text-on-surface font-body-md overflow-hidden h-screen flex flex-col">
+<!-- Top App Bar (Shared Component Context) -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile py-sm max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md leading-none gold-shimmer">Modern History</h1>
+<p class="font-caption text-caption text-on-surface-variant">Revolt of 1857 • Study Notes</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors relative group">
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+<span class="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-surface-container-highest text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Download Offline</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors" id="bookmarkBtn">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a scholar-inspired panda wearing elegant round gold spectacles and a navy academic robe, looking thoughtfully at the viewer against a dark midnight blue background with subtle golden highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXKU8fnwFNCbHX3hHOG-lXUsrZQUGTFp_WUff0bPu7Z0B68KGNcqpBIo2tzaT6CparictQzfd6RPkK-7j3i6hP3SdP7xTnA9hRT71BUzZE9DsBrzFii6OiYBcTFQ5cSSfIIbwyO2PibOYeNrpll8lQ8VJbadTWfBEMBootBMvJHNfXWDWgbiQnHVlr2Tq8eaau-vwHB8TDsTHnB2LT47prYfckwQ3z7-Kb3F9zngP13s1IfT4cMFguvWbNGO24vkZCQyzwVSMbUqeO"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main PDF Viewer Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-surface-container-low px-4 py-8 relative">
+<!-- Branding Background Detail -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.03]">
+<img class="w-96 grayscale invert" data-alt="An ornate circular emblem with a scholarly panda at its center, surrounded by golden laurel wreaths and academic symbols. The style is regal and institutional, with a deep navy and gold palette that feels prestigious and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoG-_pzlModg10jArbdCEABC6N_-hvxGhPbR6K1cAj0CcYB4KOO5-osxlZmzBuhKO0dUGMXcPlmWaT5Iv6snPNdxIJGwDRNceRg1gp_NwB10bMq8Ed-jaGLlaDagk6i-0U_7SgyJ9J99fWq5sw8O1MdrA0RplXCHSTPyetbOLJqB1wTwk0kJ5dhOSN3ZBFMCpU-c3PL1DrHmCST5pT69sCTocF1Vq1QencUwaLs9BF5wwff0KfxqhawOZeYTowgZC6e9QnaPV-THDI"/>
+</div>
+<!-- PDF Page Mockup -->
+<div class="max-w-4xl mx-auto bg-surface-container-lowest pdf-page-shadow rounded-lg p-xl md:p-24 relative z-10 border border-outline-variant/30">
+<div class="flex justify-between items-start mb-12 border-b border-outline-variant pb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary/10 flex items-center justify-center rounded-lg border border-secondary/30">
+<span class="material-symbols-outlined text-secondary text-3xl">history_edu</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest">CHAPTER IV</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">The Great Revolt of 1857</h2>
+</div>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-on-surface-variant block">EduMastery Premium Notes</span>
+<span class="font-caption text-caption text-on-surface-variant">Class: UPSC/Civil Services</span>
+</div>
+</div>
+<article class="space-y-8">
+<section>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Introduction</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            The Revolt of 1857, often termed as the <span class="text-secondary font-semibold">"First War of Independence,"</span> was a watershed moment in colonial Indian history. It began as a mutiny of sepoys in Meerut and quickly spread across North and Central India, shaking the very foundations of the British East India Company's rule.
+          </p>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 py-6">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+<h4 class="font-label-md text-label-md text-secondary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">flash_on</span>
+              IMMEDIATE CAUSE
+            </h4>
+<p class="font-body-md text-body-md text-on-surface">
+              The introduction of the <span class="italic">Enfield Rifle</span> and the rumor that its cartridges were greased with beef and pork fat offended both Hindu and Muslim sepoys.
+            </p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+<h4 class="font-label-md text-label-md text-secondary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">group</span>
+              KEY LEADERS
+            </h4>
+<ul class="space-y-2 font-body-md text-body-md text-on-surface">
+<li class="flex justify-between border-b border-outline-variant/30 pb-1"><span>Mangal Pandey</span> <span class="text-on-surface-variant">Barrackpore</span></li>
+<li class="flex justify-between border-b border-outline-variant/30 pb-1"><span>Rani Laxmibai</span> <span class="text-on-surface-variant">Jhansi</span></li>
+<li class="flex justify-between pb-1"><span>Nana Saheb</span> <span class="text-on-surface-variant">Kanpur</span></li>
+</ul>
+</div>
+</section>
+<section>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Geographical Spread</h3>
+<div class="w-full h-64 bg-surface-container bg-[radial-gradient(circle,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:20px_20px] rounded-xl border border-outline-variant flex items-center justify-center overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-40" data-alt="A stylized historical map of Northern India rendered in a modern dark-mode aesthetic with midnight navy oceans and dark slate landmasses. Major centers of the 1857 revolt like Delhi, Meerut, and Jhansi are highlighted with glowing golden nodes and connecting lines, mimicking a tactical military interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIDIL9M6TuwwfzlngOgNDUBZ_Z6mgt9sYtiPZh-Xjcm1v_hw3v3BsY7NlvbRAfdJli9QG9wk_6Vmw8BlD1d2MqLerKMFPuhy9NRUqFrAvVfwIbLI566TSAQZ_lw8KcfDhBkMtLA7-XnNr1CDfOj87E3Mfht3IZHHjAODkcHHLakB816XZrN6PNHJQYyDYOivcwk8rnWuwMlkzFDal9gu94PsTsvqe5qL8577YmdYv_9Vbj_k5gMMyJTHjj1LM0OlbbS2kCUxKMu0qA')"></div>
+<div class="relative z-10 text-center px-4">
+<span class="material-symbols-outlined text-secondary text-4xl mb-2">map</span>
+<p class="font-label-md text-label-md">Interactive Conflict Map: North India 1857</p>
+</div>
+</div>
+</section>
+<section>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Nature of the Revolt</h3>
+<div class="space-y-4">
+<div class="flex gap-4 items-start">
+<div class="w-2 h-2 mt-2 rounded-full bg-secondary shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+<strong class="text-on-surface">Political:</strong> The Doctrine of Lapse implemented by Lord Dalhousie caused widespread resentment among Indian princely states.
+              </p>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-2 h-2 mt-2 rounded-full bg-secondary shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+<strong class="text-on-surface">Socio-Religious:</strong> Interference in social customs like Sati and introduction of Western education were viewed as attacks on tradition.
+              </p>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-2 h-2 mt-2 rounded-full bg-secondary shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+<strong class="text-on-surface">Economic:</strong> Heavy taxation and the destruction of traditional handicraft industries led to extreme poverty and peasant uprisings.
+              </p>
+</div>
+</div>
+</section>
+</article>
+<footer class="mt-16 pt-8 border-t border-outline-variant flex justify-between items-center opacity-50">
+<div class="flex items-center gap-2">
+<img class="h-6 w-6" data-alt="A small, minimalist golden logo of a panda's head wearing a mortarboard, symbolizing Study Panda's brand of institutional excellence and intellectual mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBioQUnvySsY9KRFrLlBQpEQwROfWoYVYuxMftOc-_OOXciVbbJvWs41CuKTUGKTbPCzREhAuPhSOhgY-MEqYftx9nEPfDQuyKqpzJ-GN63PUsfIgJGPW3O-RQrA4FlZ33XZkT83dSc5FG7xx_oCroMYUIg9dU7Bo8yJGPnYMZfCJWcTREp-PH9nMlA6GD153MO0XknTTlQKxEF1nVQBHPlGNpsyQIqv9H36EJEgZRERq2ExSkGdy4O-JQhPIX9wDKCM75u2f2tXYiQ"/>
+<span class="font-label-md text-sm">STUDY PANDA ACADEMY</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Page 4 of 24 • Proprietary Material</span>
+</footer>
+</div>
+</main>
+<!-- Reading Controls Float -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 bg-surface-container-highest/95 backdrop-blur-md px-4 py-2 rounded-full shadow-2xl border border-outline-variant/50">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">zoom_out</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-1"></div>
+<div class="px-4 py-1 bg-surface-container-low rounded-full border border-outline-variant/30 flex items-center gap-2">
+<span class="font-label-md text-primary">4</span>
+<span class="text-on-surface-variant font-caption">/ 24</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant mx-1"></div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">zoom_in</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-1"></div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors flex items-center justify-center" title="Search document">
+<span class="material-symbols-outlined text-on-surface">search</span>
+</button>
+</div>
+<!-- Bottom Nav Bar (Suppressed as per task focus, but template provided for context) -->
+<nav class="hidden md:flex fixed bottom-0 left-0 w-full z-40 justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant transition-transform duration-300 translate-y-full hover:translate-y-0" id="peekNav">
+<div class="flex gap-12">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-sm text-label-sm">Videos</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-6 py-1">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">PDFs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-sm text-label-sm">Quiz</span>
+</button>
+</div>
+</nav>
+<script>
+    // Micro-interactions
+    const bookmarkBtn = document.getElementById('bookmarkBtn');
+    let isBookmarked = false;
+
+    bookmarkBtn.addEventListener('click', () => {
+      isBookmarked = !isBookmarked;
+      const icon = bookmarkBtn.querySelector('.material-symbols-outlined');
+      if (isBookmarked) {
+        icon.style.fontVariationSettings = "'FILL' 1";
+        // Create a small toast
+        showToast("Bookmark added to Page 4");
+      } else {
+        icon.style.fontVariationSettings = "'FILL' 0";
+        showToast("Bookmark removed");
+      }
+    });
+
+    function showToast(msg) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed top-20 left-1/2 -translate-x-1/2 bg-secondary text-on-secondary px-6 py-2 rounded-full font-label-md shadow-lg z-[100] transition-all duration-300 opacity-0 transform translate-y-4';
+      toast.innerText = msg;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.classList.remove('opacity-0', 'translate-y-4');
+      }, 100);
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-4');
+        setTimeout(() => toast.remove(), 300);
+      }, 2000);
+    }
+
+    // Scroll reveal logic for nav (optional desktop polish)
+    const mainArea = document.querySelector('main');
+    const peekNav = document.getElementById('peekNav');
+    
+    mainArea.addEventListener('scroll', () => {
+      // Logic for hiding/showing elements on scroll could go here
+    });
+  </script>
+</body></html>

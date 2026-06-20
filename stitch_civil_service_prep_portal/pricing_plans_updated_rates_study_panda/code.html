@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Panda - Premium Plans</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&amp;family=Source+Sans+3:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;family=Source+Sans+3:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .achievement-badge {
+            background: linear-gradient(135deg, #ffb95f 0%, #ee9800 100%);
+            color: #000;
+        }
+        .premium-border {
+            border: 1px solid rgba(173, 198, 255, 0.2);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        /* Custom Toggle Styling */
+        .toggle-switch:checked + .toggle-bg {
+            background-color: #4d8eff;
+        }
+        .toggle-switch:checked + .toggle-bg .toggle-dot {
+            transform: translateX(24px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#b7c8e1",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "secondary-container": "#ee9800",
+                        "surface-container-low": "#131b2e",
+                        "outline-variant": "#424754",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "tertiary-fixed": "#d3e4fe",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#00285d",
+                        "on-primary": "#002e6a",
+                        "inverse-primary": "#005ac2",
+                        "surface-bright": "#31394d",
+                        "on-tertiary": "#213145",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary-container": "#1a2b3e",
+                        "secondary-fixed": "#ffddb8",
+                        "on-secondary": "#472a00",
+                        "on-primary-fixed": "#001a42",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#8292aa",
+                        "on-background": "#dae2fd",
+                        "secondary": "#ffb95f",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "surface": "#0b1326",
+                        "on-surface": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-secondary-container": "#5b3800",
+                        "on-primary-fixed-variant": "#004395",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#283044",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-high": "#222a3d",
+                        "primary-container": "#4d8eff",
+                        "surface-container-highest": "#2d3449",
+                        "surface-variant": "#2d3449",
+                        "surface-dim": "#0b1326",
+                        "outline": "#8c909f",
+                        "on-surface-variant": "#c2c6d6",
+                        "background": "#0b1326",
+                        "primary": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "xl": "40px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "label-md": ["\"Source Sans 3\""],
+                        "headline-xl": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "caption": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-md": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 left-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<img alt="Study Panda Mascot" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDroQ1JHA1fsAINcsIo_bShpYyA9f4WI-O4Yjf025sclCQxupYugCunuzZyoAJU-yp49S8dO6uB9gKAdDO3XeQESRy3f-Unpw8MGCcIH1iNqxeFj9EsEsAN2WVlV6aENge2mJ7Cr2M2oZecFZ00MV3YjS237pCOAQmiewRB0tBEQQexqvaHCMja8yhZvHgqtR-yWmnK2XCAnePNhZ8VbajVbmnTQM_OcGGIGH9RQmPi7MGrtxtnJSzZH3VWIbrXD5A-nqZSMSObWTyJ"/>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">EduMastery</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary dark:text-primary-fixed font-bold font-label-md transition-colors duration-200" href="#">Pricing</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md hover:text-primary transition-colors duration-200" href="#">Courses</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md hover:text-primary transition-colors duration-200" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 rounded-full hover:bg-surface-container-high transition-colors">notifications</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">JD</div>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-24 px-margin-mobile">
+<div class="max-w-7xl mx-auto text-center mb-16">
+<h1 class="font-headline-xl text-headline-xl mb-4 text-primary">Elevate Your Academic Potential</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">Choose the path that fits your learning journey. From daily current affairs to AI-powered personalized coaching.</p>
+<!-- Billing Toggle -->
+<div class="flex items-center justify-center gap-4">
+<span class="font-label-md text-primary" id="monthly-label">Monthly</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-switch" id="billing-toggle" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-high rounded-full toggle-bg transition-colors relative">
+<div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full toggle-dot transition-transform"></div>
+</div>
+</label>
+<span class="font-label-md text-on-surface-variant" id="yearly-label">Yearly <span class="text-secondary font-bold ml-1">(Save up to 40%)</span></span>
+</div>
+</div>
+<!-- Pricing Grid -->
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter items-stretch">
+<!-- Free Plan -->
+<div class="flex flex-col bg-surface-container-low premium-border rounded-xl p-8 hover:bg-surface-container transition-all duration-300 transform hover:-translate-y-1">
+<div class="mb-6">
+<h3 class="font-headline-md text-headline-md mb-1">Free</h3>
+<p class="font-caption text-caption text-on-surface-variant">Kickstart your learning</p>
+</div>
+<div class="mb-8">
+<span class="font-headline-xl text-headline-xl text-primary">₹0</span>
+<span class="text-on-surface-variant font-label-md">/month</span>
+</div>
+<ul class="flex-grow space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Limited PDF Access</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Basic Current Affairs</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">3 AI Queries / Day</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg border border-outline text-on-surface font-label-md hover:bg-surface-container-high transition-colors">Start Free</button>
+</div>
+<!-- Basic Plan -->
+<div class="flex flex-col bg-surface-container-low premium-border rounded-xl p-8 hover:bg-surface-container transition-all duration-300 transform hover:-translate-y-1">
+<div class="mb-6">
+<h3 class="font-headline-md text-headline-md mb-1">Basic</h3>
+<p class="font-caption text-caption text-on-surface-variant">Essential study toolkit</p>
+</div>
+<div class="mb-8">
+<span class="font-headline-xl text-headline-xl text-primary price-monthly">₹49</span>
+<span class="font-headline-xl text-headline-xl text-primary price-yearly hidden">₹399</span>
+<span class="text-on-surface-variant font-label-md billing-period">/month</span>
+</div>
+<ul class="flex-grow space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Comprehensive Notes</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Full PDF Library</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Daily Current Affairs</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Community Support</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg border border-primary text-primary font-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors">Select Basic</button>
+</div>
+<!-- Pro Plan -->
+<div class="flex flex-col bg-surface-container-low premium-border rounded-xl p-8 hover:bg-surface-container transition-all duration-300 transform hover:-translate-y-1">
+<div class="mb-6">
+<h3 class="font-headline-md text-headline-md mb-1">Pro</h3>
+<p class="font-caption text-caption text-on-surface-variant">For dedicated aspirants</p>
+</div>
+<div class="mb-8">
+<span class="font-headline-xl text-headline-xl text-primary price-monthly">₹99</span>
+<span class="font-headline-xl text-headline-xl text-primary price-yearly hidden">₹799</span>
+<span class="text-on-surface-variant font-label-md billing-period">/month</span>
+</div>
+<ul class="flex-grow space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Exclusive Video Lectures</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Interactive Quizzes</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Smart Bookmarks</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Priority PDF Exports</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg border border-primary text-primary font-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors">Select Pro</button>
+</div>
+<!-- Premium Plan -->
+<div class="relative flex flex-col bg-surface-container-high border-2 border-primary rounded-xl p-8 shadow-2xl transform lg:scale-105 z-10">
+<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 achievement-badge px-6 py-1 rounded-full font-label-md whitespace-nowrap shadow-lg">
+                    BEST VALUE
+                </div>
+<div class="mb-6">
+<h3 class="font-headline-md text-headline-md mb-1">Premium</h3>
+<p class="font-caption text-caption text-on-surface-variant">The ultimate mastery suite</p>
+</div>
+<div class="mb-8">
+<span class="font-headline-xl text-headline-xl text-primary price-monthly">₹149</span>
+<span class="font-headline-xl text-headline-xl text-primary price-yearly hidden">₹999</span>
+<span class="text-on-surface-variant font-label-md billing-period">/month</span>
+</div>
+<ul class="flex-grow space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">stars</span>
+<span class="text-on-surface font-body-md font-bold">Panda AI Assistant 24/7</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Unlimited Mock Tests</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Full Content Archive</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">One-on-One Mentorship</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<span class="text-on-surface-variant font-body-md">Offline Access Mode</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg bg-primary text-on-primary font-label-md hover:bg-primary-fixed-dim transition-colors shadow-lg shadow-primary/20">Get Started Now</button>
+</div>
+</div>
+<!-- Trust Section -->
+<section class="mt-24 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center opacity-70">
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+<span class="font-label-md">Secure Payments</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">event_repeat</span>
+<span class="font-label-md">Cancel Anytime</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">support_agent</span>
+<span class="font-label-md">24/7 Priority Support</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl">school</span>
+<span class="font-label-md">Curated by Experts</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-sm text-label-sm">Videos</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Pricing</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-sm text-label-sm">Quiz</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</div>
+</nav>
+<script>
+        const toggle = document.getElementById('billing-toggle');
+        const monthlyLabel = document.getElementById('monthly-label');
+        const yearlyLabel = document.getElementById('yearly-label');
+        const monthlyPrices = document.querySelectorAll('.price-monthly');
+        const yearlyPrices = document.querySelectorAll('.price-yearly');
+        const billingPeriods = document.querySelectorAll('.billing-period');
+
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                // Yearly
+                monthlyLabel.classList.remove('text-primary');
+                monthlyLabel.classList.add('text-on-surface-variant');
+                yearlyLabel.classList.add('text-primary');
+                yearlyLabel.classList.remove('text-on-surface-variant');
+                
+                monthlyPrices.forEach(p => p.classList.add('hidden'));
+                yearlyPrices.forEach(p => p.classList.remove('hidden'));
+                billingPeriods.forEach(p => p.textContent = '/year');
+            } else {
+                // Monthly
+                monthlyLabel.classList.add('text-primary');
+                monthlyLabel.classList.remove('text-on-surface-variant');
+                yearlyLabel.classList.remove('text-primary');
+                yearlyLabel.classList.add('text-on-surface-variant');
+
+                monthlyPrices.forEach(p => p.classList.remove('hidden'));
+                yearlyPrices.forEach(p => p.classList.add('hidden'));
+                billingPeriods.forEach(p => p.textContent = '/month');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Panda - UPSC &amp; JKPSC Preparation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#6d5000",
+                    "surface-container": "#1d2023",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-tertiary-fixed": "#2a1800",
+                    "secondary-fixed-dim": "#fbbc00",
+                    "surface-container-highest": "#333538",
+                    "inverse-surface": "#e1e2e4",
+                    "outline-variant": "#44474e",
+                    "on-surface-variant": "#c5c6cf",
+                    "error-container": "#93000a",
+                    "surface-dim": "#111416",
+                    "primary-fixed-dim": "#b6c6f0",
+                    "on-tertiary-fixed-variant": "#5e4117",
+                    "primary-container": "#1a2b4c",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#261a00",
+                    "inverse-on-surface": "#191c1e",
+                    "secondary-container": "#ffbf00",
+                    "on-background": "#eff1f3",
+                    "surface-container-lowest": "#0b0e11",
+                    "secondary": "#795900",
+                    "surface-container-low": "#191c1e",
+                    "surface-container-high": "#282a2d",
+                    "on-surface": "#eff1f3",
+                    "secondary-fixed": "#ffdfa0",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#b6c6f0",
+                    "surface-variant": "#44474e",
+                    "tertiary-fixed-dim": "#eabf8a",
+                    "on-primary-fixed": "#071b3b",
+                    "surface": "#031636",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "primary": "#b6c6f0",
+                    "tertiary": "#241300",
+                    "on-tertiary-container": "#b28c5b",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#364669",
+                    "surface-tint": "#4e5e82",
+                    "on-primary-container": "#8293ba",
+                    "error": "#ba1a1a",
+                    "outline": "#8e9199",
+                    "tertiary-fixed": "#ffddb5",
+                    "background": "#031636",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#3f2600",
+                    "surface-bright": "#343a3d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "md": "24px",
+                    "xl": "48px",
+                    "base": "4px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px",
+                    "lg": "32px",
+                    "gutter": "16px",
+                    "sm": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Public Sans"],
+                    "body-lg": ["Public Sans"],
+                    "display-lg": ["Public Sans"],
+                    "headline-md": ["Public Sans"],
+                    "label-sm": ["Public Sans"],
+                    "headline-sm": ["Public Sans"],
+                    "body-md": ["Public Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #031636; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .card-shadow { box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .gold-accent { color: #fbbc00; }
+        .gold-bg { background-color: #fbbc00; }
+    </style>
+</head>
+<body class="text-on-surface bg-background">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 right-0 z-40">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Study Panda Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqCFCnejgi4gdQlsTXpa2st4mGW4Af5cqcLTXUTV_nLkY6V6sFqkfpU7QFKESYX4B7-s4wUTn8da3UIOp_sUUi1ygzp9TKhUtehT3gOhk9CR9ods43ckei1XF921w4ihFvsdjJ8FJHfjLckSur4TQpVM8_P4tGbNMfxRqBl1WzSc-FDBuF0gasNZGQnv8R6PNNkj-Qk_BBWQJhmjr7dYLrtTDBDqN2bUaAoeSPQpxdOTjyn40_o3lphgQtlaeXgXCxeM22IlN-gBJX"/>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-sm font-bold text-primary leading-tight">Study Panda</h1>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant font-label-sm leading-none">Dream Big, Study Hard</p>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<button class="p-xs rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-32 max-w-7xl mx-auto px-margin-mobile">
+<!-- 1. Exam Selector -->
+<section class="mb-lg overflow-x-auto hide-scrollbar -mx-margin-mobile px-margin-mobile">
+<div class="flex gap-xs whitespace-nowrap">
+<button class="px-md py-xs rounded-full gold-bg text-on-secondary-fixed font-label-md text-label-md transition-all active:scale-95 font-bold shadow-lg shadow-secondary/20">UPSC</button>
+<button class="px-md py-xs rounded-full bg-surface-container-highest text-on-surface-variant border border-outline-variant font-label-md text-label-md transition-all hover:bg-surface-container-high">JKPSC</button>
+<button class="px-md py-xs rounded-full bg-surface-container-highest text-on-surface-variant border border-outline-variant font-label-md text-label-md transition-all hover:bg-surface-container-high">JKP Constable</button>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- 2. Streak Banner (Left Column Desktop) -->
+<div class="md:col-span-12 lg:col-span-4 h-full">
+<div class="bg-primary-container text-on-primary-container rounded-xl p-md flex items-center justify-between card-shadow h-full relative overflow-hidden border border-outline-variant">
+<div class="z-10">
+<p class="font-label-sm text-label-sm uppercase tracking-wider gold-accent">Daily Commitment</p>
+<h2 class="font-display-lg text-display-lg mb-base text-on-primary">12 Day Streak</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Keep it up! You're in the top 5% of aspirants.</p>
+</div>
+<div class="z-10 flex items-center justify-center gold-bg w-16 h-16 rounded-full shadow-lg border-4 border-primary-container">
+<span class="material-symbols-outlined text-on-secondary-container text-4xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 gold-bg opacity-5 rounded-full"></div>
+</div>
+</div>
+<!-- 3. Daily Current Affairs (Right Column Desktop) -->
+<div class="md:col-span-12 lg:col-span-8">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md card-shadow">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">news</span>
+                            Daily Current Affairs
+                        </h3>
+<span class="text-label-sm font-label-sm px-xs py-1 bg-surface-container-high rounded text-on-surface-variant">Oct 24, 2023</span>
+</div>
+<ul class="space-y-xs">
+<li class="flex gap-sm group">
+<div class="w-1.5 h-1.5 gold-bg rounded-full mt-2.5 flex-shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed group-hover:text-primary transition-colors">Supreme Court ruling on federal structure strengthens the basic structure doctrine in Indian Polity.</p>
+</li>
+<li class="flex gap-sm group">
+<div class="w-1.5 h-1.5 gold-bg rounded-full mt-2.5 flex-shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed group-hover:text-primary transition-colors">India-Middle East-Europe Economic Corridor (IMEC) details finalized at recent multilateral summit.</p>
+</li>
+<li class="flex gap-sm group">
+<div class="w-1.5 h-1.5 gold-bg rounded-full mt-2.5 flex-shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed group-hover:text-primary transition-colors">New RBI guidelines on digital lending aiming to enhance transparency and consumer protection.</p>
+</li>
+<li class="flex gap-sm group">
+<div class="w-1.5 h-1.5 gold-bg rounded-full mt-2.5 flex-shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed group-hover:text-primary transition-colors">ISRO's Gaganyaan mission completes pivotal liquid propulsion engine tests successfully.</p>
+</li>
+<li class="flex gap-sm group">
+<div class="w-1.5 h-1.5 gold-bg rounded-full mt-2.5 flex-shrink-0"></div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed group-hover:text-primary transition-colors">Global Biodiversity Framework: India's commitments and legislative updates for 2024.</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- 5. Quick Links -->
+<div class="md:col-span-12">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+<div class="bg-surface-container-lowest border border-outline-variant p-sm rounded-xl card-shadow flex flex-col items-center justify-center hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-xs group-hover:scale-110 transition-transform border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-2xl">account_tree</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Syllabus</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-sm rounded-xl card-shadow flex flex-col items-center justify-center hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-xs group-hover:scale-110 transition-transform border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-2xl">history_edu</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">PYQs</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-sm rounded-xl card-shadow flex flex-col items-center justify-center hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-xs group-hover:scale-110 transition-transform border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-2xl">contract_edit</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Mock Tests</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-sm rounded-xl card-shadow flex flex-col items-center justify-center hover:bg-surface-container-high transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-xs group-hover:scale-110 transition-transform border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-2xl">download</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Downloads</span>
+</div>
+</div>
+</div>
+<!-- 4. New Videos -->
+<div class="md:col-span-12">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary">New Live Sessions</h3>
+<button class="text-primary font-label-md text-label-md flex items-center gap-xs hover:underline">
+                        View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar -mx-margin-mobile px-margin-mobile pb-sm">
+<!-- Video Card 1 -->
+<div class="flex-shrink-0 w-64 md:w-80 group cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden mb-xs bg-surface-container-highest border border-outline-variant">
+<img alt="Video Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9iCBGSib3duE6Zbsu6R6dQeNKGOa3QbC1K58v2qPH0_CFt-zbH2cedYHH1MTioYnkjYAgXunYZ0vKPARM_fFb3YLbKABLDnP5IYaNIaIqI3bbS5ZEFgY1NuNJPVERfX3677B6UrmAmRh-C14xNyI6-hGKObEUdhBBSA7_YfrdYUnRuGUJeAJnV2ijlwSmK70JvTxh8nR4aZnaeVrzyGMpxzEKzN2Nu1idPAdB8befSUr9xdd11-Ocgz3OpvA4Ti_bknEzEVHrvkbe"/>
+<div class="absolute inset-0 bg-primary-container/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-primary text-5xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white font-label-sm text-label-sm px-1.5 py-0.5 rounded">45:12</div>
+<!-- Progress Bar -->
+<div class="absolute bottom-0 left-0 h-1 gold-bg" style="width: 60%;"></div>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface line-clamp-2">Mastering Indian Geography: River Systems Part 1</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">4.2k views • 2 hours ago</p>
+</div>
+<!-- Video Card 2 -->
+<div class="flex-shrink-0 w-64 md:w-80 group cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden mb-xs bg-surface-container-highest border border-outline-variant">
+<img alt="Video Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhwmua_8iqJ-m8Oh5YfEamC7Jc36ARPPAeJrmSA3Gr-Khw-CrhRFEjrWRgn2SN3lJapA51qLS21zPn-QqaVy-8jmpseryiDydLD9jrsuHZm29285S78bQad5OuFMyoMHEyyW2yz8K9A6m0q8LkRWvgtFDScdV5Y8OREfmLL9PWxUMCJew_1kEKl2dW5EWhOvcg_6FS345u68OHYwFo5CKwU0c2SiH9jlHcuUES3StYIinOs9warBw4YtNOh-1WMyRzPmnTeWwrAUCq"/>
+<div class="absolute inset-0 bg-primary-container/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-primary text-5xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white font-label-sm text-label-sm px-1.5 py-0.5 rounded">32:05</div>
+<!-- Progress Bar -->
+<div class="absolute bottom-0 left-0 h-1 gold-bg" style="width: 10%;"></div>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface line-clamp-2">Ethics and Integrity: GS Paper IV Deep Dive</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">1.8k views • 5 hours ago</p>
+</div>
+<!-- Video Card 3 -->
+<div class="flex-shrink-0 w-64 md:w-80 group cursor-pointer">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden mb-xs bg-surface-container-highest border border-outline-variant">
+<img alt="Video Thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmCK1pP4OeSv2bY1BGsXsTXEGm6vM4MrnUCi8Z6CAfaLMfpGJJcNm9wvrKIxVrOiRCAybckxbsZe1iJXO9b1Ae6SnM9Tj1eGMx8_lJmJejD7Liiwti4aGU5h_l1AkT-X4P3BE8tE0gPl4M_Rpeagqipw-KGl43bC7l-yYo197nlCcabtXezxjo74ifWvTx7iqHOzRDdh9dzb7pqsr_7Zxm1ywu88Yr0szU22gqXi41kdjyKaMXhF4gXYC-3SA0JTBHSYycTERvjCPX"/>
+<div class="absolute inset-0 bg-primary-container/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-primary text-5xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white font-label-sm text-label-sm px-1.5 py-0.5 rounded">58:40</div>
+<!-- Progress Bar -->
+<div class="absolute bottom-0 left-0 h-1 gold-bg" style="width: 0%;"></div>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface line-clamp-2">Weekly Economy Round-up: Budget 2024 Analysis</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">3.1k views • 1 day ago</p>
+</div>
+</div>
+</div>
+<!-- 6. Recommended PDFs -->
+<div class="md:col-span-12">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-sm">Recommended Study Material</h3>
+<div class="space-y-sm">
+<!-- PDF Item 1 -->
+<div class="flex items-center gap-sm bg-surface-container-lowest border border-outline-variant p-sm rounded-xl card-shadow hover:border-primary transition-all cursor-pointer">
+<div class="w-12 h-12 bg-error-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-2xl">picture_as_pdf</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Monthly Yojana Summary - September 2023</h4>
+<div class="flex gap-sm mt-0.5">
+<span class="text-label-sm font-label-sm text-on-surface-variant">2.4 MB</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Yesterday</span>
+</div>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-primary">download</span>
+</button>
+</div>
+<!-- PDF Item 2 -->
+<div class="flex items-center gap-sm bg-surface-container-lowest border border-outline-variant p-sm rounded-xl card-shadow hover:border-primary transition-all cursor-pointer">
+<div class="w-12 h-12 bg-error-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-2xl">picture_as_pdf</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Modern History: Notes on Revolt of 1857</h4>
+<div class="flex gap-sm mt-0.5">
+<span class="text-label-sm font-label-sm text-on-surface-variant">1.8 MB</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">3 days ago</span>
+</div>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-primary">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tagline Section -->
+<div class="md:col-span-12 mt-xl text-center pb-8">
+<p class="font-body-lg italic text-on-surface-variant opacity-80">"Dream Big, Study Hard, Succeed Always."</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest border-t border-outline-variant shadow-lg">
+<!-- Home Active -->
+<a class="flex flex-col items-center justify-center gold-bg text-on-secondary-container rounded-full px-4 py-1 transition-transform duration-150 active:scale-95 border border-outline-variant shadow-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-sm text-label-sm">Videos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">PDFs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-sm text-label-sm">Quiz</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</a>
+</nav>
+<script>
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', function(e) {
+                // Micro-interactions logic
+            });
+        });
+    </script>
+</body></html>

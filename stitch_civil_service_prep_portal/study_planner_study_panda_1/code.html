@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Study Planner | EduMastery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Source+Sans+3:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#4d8eff",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#472a00",
+                    "error-container": "#93000a",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-primary-container": "#00285d",
+                    "outline-variant": "#424754",
+                    "surface-tint": "#adc6ff",
+                    "tertiary": "#b7c8e1",
+                    "surface-container-low": "#131b2e",
+                    "surface-container-highest": "#2d3449",
+                    "background": "#0b1326",
+                    "on-background": "#dae2fd",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "secondary-fixed": "#ffddb8",
+                    "secondary-container": "#ee9800",
+                    "on-secondary-container": "#5b3800",
+                    "surface-variant": "#2d3449",
+                    "secondary": "#ffb95f",
+                    "on-error": "#690005",
+                    "primary": "#adc6ff",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "on-primary": "#002e6a",
+                    "surface": "#0b1326",
+                    "on-tertiary": "#213145",
+                    "on-primary-fixed": "#001a42",
+                    "surface-container-lowest": "#060e20",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "primary-fixed": "#d8e2ff",
+                    "on-surface": "#dae2fd",
+                    "on-primary-fixed-variant": "#004395",
+                    "primary-fixed-dim": "#adc6ff",
+                    "outline": "#8c909f",
+                    "inverse-on-surface": "#283044",
+                    "on-secondary-fixed": "#2a1700",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "tertiary-container": "#8292aa",
+                    "surface-container": "#171f33",
+                    "on-tertiary-container": "#1a2b3e",
+                    "inverse-surface": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "surface-container-high": "#222a3d",
+                    "inverse-primary": "#005ac2",
+                    "surface-dim": "#0b1326",
+                    "on-surface-variant": "#c2c6d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["\"Source Sans 3\""],
+                    "caption": ["Public Sans"],
+                    "headline-xl": ["Public Sans"],
+                    "headline-lg": ["Public Sans"],
+                    "body-lg": ["Public Sans"],
+                    "headline-md": ["Public Sans"],
+                    "headline-lg-mobile": ["Public Sans"],
+                    "body-md": ["Public Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131b2e;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #424754;
+            border-radius: 10px;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 z-50 w-full transition-colors duration-200">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Study Panda Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiq_6hTOVBQRk47JUnktgkfn_5MzXOX4OEyKvm9Wan50c-3lxJE2okqyv9OHS-3GNJZkVZp1h770G9cDU1Ke_AfJ0LsakNJdoxBv-WxKCEo_kjQomD059SH6rR8KC7skqf-iW91bnHH7I8jLllHQ7SW_DiwHJDJ5SdpkVqRWuls_ook8XooK8Ed-NHqsgYdMBErNVzO7zD1MT5abZfYiwJ-fvWjndQAoqmLNY22CLaZ0P3TC58g4RQl7OVe6HdXWJE9dreijNeVfMZ"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Study Panda</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hidden md:flex items-center gap-xs px-4 py-2 bg-primary text-on-primary rounded-xl font-label-md transition-transform active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                    Add Task
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-xl max-w-7xl mx-auto">
+<!-- Dashboard Header / Progress Section -->
+<section class="mb-lg grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="md:col-span-2 bg-surface-container p-lg rounded-xl border border-outline-variant flex flex-col md:flex-row items-center justify-between gap-lg">
+<div class="flex flex-col gap-xs">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Weekly Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">You've completed 75% of your UPSC targets this week. Keep the momentum!</p>
+<div class="mt-md flex gap-sm">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-caption rounded-full font-bold">UPSC PRELIMS 2024</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-caption rounded-full border border-outline-variant">142 Days Left</span>
+</div>
+</div>
+<div class="relative flex items-center justify-center w-32 h-32">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-container-highest stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="10"></circle>
+<circle class="text-primary stroke-current progress-ring__circle" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-primary">75%</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Daily Goal</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant relative overflow-hidden group">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Next Session</h3>
+<p class="font-body-md text-body-md text-primary font-bold">Modern History - Spectrum</p>
+<p class="font-caption text-caption text-on-surface-variant mt-xs">Starting in 15 minutes</p>
+</div>
+<button class="mt-lg w-full py-2 bg-surface-container-high border border-outline-variant rounded-lg text-on-surface font-label-md hover:bg-primary hover:text-on-primary transition-all">
+                        Join Study Room
+                    </button>
+</div>
+</div>
+</section>
+<!-- Main Content Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Week Calendar (Left Column) -->
+<aside class="lg:col-span-3 flex flex-col gap-lg">
+<div class="bg-surface-container p-md rounded-xl border border-outline-variant">
+<div class="flex items-center justify-between mb-md">
+<h4 class="font-label-md text-label-md text-on-surface">January 2024</h4>
+<div class="flex gap-xs">
+<button class="p-1 hover:bg-surface-container-highest rounded"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container-highest rounded"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center">
+<span class="text-[10px] text-on-surface-variant font-bold">M</span>
+<span class="text-[10px] text-on-surface-variant font-bold">T</span>
+<span class="text-[10px] text-on-surface-variant font-bold">W</span>
+<span class="text-[10px] text-on-surface-variant font-bold">T</span>
+<span class="text-[10px] text-on-surface-variant font-bold">F</span>
+<span class="text-[10px] text-on-surface-variant font-bold">S</span>
+<span class="text-[10px] text-on-surface-variant font-bold">S</span>
+<div class="p-1 text-on-surface-variant text-caption rounded-lg">15</div>
+<div class="p-1 text-on-surface-variant text-caption rounded-lg">16</div>
+<div class="p-1 text-on-surface-variant text-caption rounded-lg">17</div>
+<div class="p-1 bg-primary text-on-primary text-caption rounded-lg font-bold">18</div>
+<div class="p-1 text-on-surface-variant text-caption rounded-lg">19</div>
+<div class="p-1 text-on-surface-variant text-caption rounded-lg">20</div>
+<div class="p-1 text-on-surface-variant text-caption rounded-lg">21</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-lg rounded-xl border border-outline-variant">
+<h4 class="font-label-md text-label-md text-secondary mb-md uppercase tracking-wider">Recommended (UPSC)</h4>
+<div class="space-y-md">
+<div class="p-md rounded-lg bg-surface-container border-l-4 border-secondary">
+<p class="font-label-md text-label-md text-on-surface">Mains Answer Writing</p>
+<p class="font-caption text-caption text-on-surface-variant">Focus: GS Paper II (Polity)</p>
+</div>
+<div class="p-md rounded-lg bg-surface-container border-l-4 border-primary">
+<p class="font-label-md text-label-md text-on-surface">CSAT Mock Test</p>
+<p class="font-caption text-caption text-on-surface-variant">Target Score: 100+</p>
+</div>
+<div class="p-md rounded-lg bg-surface-container border-l-4 border-tertiary">
+<p class="font-label-md text-label-md text-on-surface">Ethics Case Studies</p>
+<p class="font-caption text-caption text-on-surface-variant">Daily Practice - 2 Questions</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Timetable (Center Column) -->
+<section class="lg:col-span-9 flex flex-col gap-lg">
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Daily Timetable</h3>
+<div class="flex gap-sm">
+<button class="px-4 py-2 bg-surface-container-highest border border-outline-variant rounded-lg font-label-md text-on-surface">Timeline View</button>
+<button class="px-4 py-2 text-on-surface-variant font-label-md">List View</button>
+</div>
+</div>
+<div class="space-y-4 custom-scrollbar max-h-[600px] overflow-y-auto pr-2">
+<!-- Time Slot 1 -->
+<div class="flex gap-md group">
+<div class="w-20 pt-2 shrink-0">
+<span class="font-label-md text-label-md text-on-surface-variant">06:00 AM</span>
+</div>
+<div class="relative flex-1 p-lg rounded-xl bg-surface-container-high border border-outline-variant hover:border-primary transition-all duration-200">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-headline-md text-headline-md text-primary">Indian Polity</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Laxmikanth: Chapters 12-14 (Parliamentary System)</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-weight="fill">check_circle</span>
+</div>
+<div class="mt-md flex items-center gap-md">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-slate-500 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up face of a diverse student avatar, smiling slightly, soft professional studio lighting, high-end 3D character style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhU5YjGWZoDBjPUw2Tjdi8Hca2ILoz7K0RmH1IEaLFsM8Y0ynuOGXC3Li9MLCUjlSkdBnIh_cfBWs-eaddKEA9vkr5h3Eh2b4vnerhf-YCWVeOaw5IsMc5QalAQvTMUNjY620aH7EwcgUjv4mApsYCkD5sVJDPQ94xC1o9f_vnM04MsQ_CDEW049EFNIDFcYyebq0xp16S7wUgjCqS7AopBiw1S8SyO-JEnmXtBgMCmKL2vkzxpkFgWoT80Ff8Tlx2jj2C4JHQnyQY"/>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-blue-500 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Avatar of a female student with a headscarf, looking professional and scholarly, soft cinematic focus, high resolution digital painting style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOmuIyWx3wOJqR5OEUAwKao6BvWb3lenAwBzItdJjJJ4KlTPow2QANfW3peruUkuZFBQf8cz5QPMfncBXyGGWH_glHfELZDzcUwtY4mZAW_dN02CIP2wXgLd4lC0SlHUPxkKP6IKvY83NO8KQeG7NLoEpavn2gMCBsopd9-i_8Paa5ONQsn9ujhzyHGjd9jQRpvmR4kLq8bzurWSnJa58oQD0-AzMXjZGmO3dEy81miIMakdLT8Cc7uaXJ4guxGl8WZFcJgBP6Myv3"/>
+</div>
+</div>
+<span class="text-caption text-on-surface-variant">12 others studying this</span>
+</div>
+</div>
+</div>
+<!-- Time Slot 2 -->
+<div class="flex gap-md">
+<div class="w-20 pt-2 shrink-0">
+<span class="font-label-md text-label-md text-on-surface-variant">08:00 AM</span>
+</div>
+<div class="flex-1 p-lg rounded-xl bg-surface-container-lowest border border-dashed border-outline-variant flex items-center justify-center">
+<button class="flex items-center gap-sm text-on-surface-variant font-label-md hover:text-primary transition-colors">
+<span class="material-symbols-outlined">coffee</span> Break / Morning Ritual
+                                </button>
+</div>
+</div>
+<!-- Time Slot 3 -->
+<div class="flex gap-md">
+<div class="w-20 pt-2 shrink-0">
+<span class="font-label-md text-label-md text-on-surface-variant">09:00 AM</span>
+</div>
+<div class="relative flex-1 p-lg rounded-xl bg-surface-container-high border border-outline-variant group">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-headline-md text-headline-md text-secondary">The Hindu Analysis</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Daily Editorial Analysis &amp; Note Making</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-2 rounded-lg bg-surface-container-highest transition-opacity">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Time Slot 4 -->
+<div class="flex gap-md">
+<div class="w-20 pt-2 shrink-0">
+<span class="font-label-md text-label-md text-on-surface-variant">11:00 AM</span>
+</div>
+<div class="relative flex-1 p-lg rounded-xl bg-primary-container/10 border border-primary/30">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-xs mb-1">
+<span class="material-symbols-outlined text-primary text-sm">schedule</span>
+<span class="text-caption text-primary font-bold uppercase tracking-wider">Currently In Progress</span>
+</div>
+<p class="font-headline-md text-headline-md text-primary">Environment &amp; Ecology</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">International Conventions &amp; Treaties</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Time Slot 5 -->
+<div class="flex gap-md">
+<div class="w-20 pt-2 shrink-0">
+<span class="font-label-md text-label-md text-on-surface-variant">02:00 PM</span>
+</div>
+<div class="relative flex-1 p-lg rounded-xl bg-surface-container-high border border-outline-variant">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">Optional Subject</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Geography: Geomorphology revision</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button (Mobile) -->
+<button class="md:hidden fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-50 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 transition-transform duration-150 scale-95 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 transition-transform duration-150 scale-95 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-sm text-label-sm">Videos</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 transition-transform duration-150 scale-95" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">PDFs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 transition-transform duration-150 scale-95 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-sm text-label-sm">Quiz</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 transition-transform duration-150 scale-95 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for Progress Circle
+        document.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('.progress-ring__circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            
+            function setProgress(percent) {
+                const offset = circumference - (percent / 100 * circumference);
+                circle.style.strokeDashoffset = offset;
+            }
+
+            // Initial set
+            setTimeout(() => setProgress(75), 500);
+        });
+
+        // Simple task completion toggle
+        const checkIcons = document.querySelectorAll('.material-symbols-outlined[data-weight="fill"]');
+        checkIcons.forEach(icon => {
+            icon.parentElement.parentElement.addEventListener('click', () => {
+                icon.style.opacity = icon.style.opacity === '0.2' ? '1' : '0.2';
+            });
+        });
+    </script>
+</body></html>
